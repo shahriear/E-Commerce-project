@@ -108,7 +108,7 @@ const Navbar = () => {
           </div>
 
           <div className="flex items-center gap-4 ml-11">
-            <button className="bg-purple-600 text-white px-4 py-2 rounded-full text-sm font-medium hover:bg-purple-800 transition">
+            <button className="bg-color text-white px-4 py-2 rounded-full text-sm font-medium hover:bg-purple-800 transition">
               Sign In
             </button>
             <div className="relative">
@@ -128,7 +128,7 @@ const Navbar = () => {
           <div className="relative">
             <button
               onClick={() => setIsCategoriesOpen(!isCategoriesOpen)}
-              className="bg-purple-600 text-white px-4 py-2 rounded-full text-sm font-medium flex items-center gap-2 hover:bg-purple-800 transition"
+              className="bg-color text-white px-4 py-2 rounded-full text-sm font-medium flex items-center gap-2 hover:bg-purple-800 transition"
             >
               <Menu size={18} />
               ALL CATEGORIES
@@ -166,7 +166,7 @@ const Navbar = () => {
                   </div>
                   {/* Submenu */}
                   {cat.sub.length > 0 && activeCategory?.name === cat.name && (
-                    <div className="absolute top-0 left-full w-56 py-2 bg-white shadow-lg border border-gray-200 transition-all duration-300 ease-in-out transform opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0">
+                    <div className="absolute  top-0 left-full w-56 py-2 bg-white shadow-lg border border-gray-200 transition-all duration-300 ease-in-out transform opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0">
                       {cat.sub.map((sub, idx) => (
                         <div
                           key={idx}
@@ -186,9 +186,9 @@ const Navbar = () => {
           <nav className="flex-1 flex gap-4 lg:gap-11 text-sm font-medium z-10">
             {navLinks.map((link, idx) => (
               <div key={idx} className="relative group">
-                <a
-                  href="#"
-                  className="flex items-center gap-2 whitespace-nowrap hover:text-purple-700 transition"
+                <Link
+                  to={link.name === 'FASHION' ? '/category' : '/category'} // এখানে তোমার route বসাও
+                  className="flex items-center gap-2 whitespace-nowrap hover:text-purple-700 rounded-full hover:bg-gray-200 px-3 py-2 transition"
                 >
                   <img
                     src={link.icon}
@@ -196,10 +196,40 @@ const Navbar = () => {
                     className="w-4 h-4 object-contain"
                   />
                   {link.name}
-                </a>
+                </Link>
 
                 {link.sub.length > 0 && (
-                  <div className="absolute top-7 left-0 w-48 py-2 bg-white shadow-lg border border-gray-200 opacity-0 translate-y-2 invisible group-hover:visible group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500 ease-in-out font-normal">
+                  <div className="absolute top-11 left-0 w-48 py-2 bg-white shadow-lg border border-gray-200 opacity-0 translate-y-2 invisible group-hover:visible group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500 ease-in-out font-normal">
+                    {link.sub.map((subItem, i) => (
+                      <Link
+                        key={i}
+                        to={`/category?sub=${subItem}`} //  সাবক্যাটেগরি query param
+                        className="block px-4 py-2 hover:bg-gray-100 whitespace-nowrap"
+                      >
+                        {subItem}
+                      </Link>
+                    ))}
+                  </div>
+                )}
+              </div>
+            ))}
+            {/* {navLinks.map((link, idx) => (
+              <div key={idx} className="relative group">
+                <Link
+                  to={'/category'}
+                  href="#"
+                  className="flex items-center gap-2 whitespace-nowrap hover:text-purple-700  rounded-full hover:bg-gray-200 px-3 py-2 transition"
+                >
+                  <img
+                    src={link.icon}
+                    alt={link.name}
+                    className="w-4 h-4 object-contain"
+                  />
+                  {link.name}
+                </Link>
+
+                {link.sub.length > 0 && (
+                  <div className="absolute top-11 left-0 w-48 py-2 bg-white shadow-lg border border-gray-200 opacity-0 translate-y-2 invisible group-hover:visible group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500 ease-in-out font-normal">
                     {link.sub.map((subItem, i) => (
                       <a
                         key={i}
@@ -212,7 +242,7 @@ const Navbar = () => {
                   </div>
                 )}
               </div>
-            ))}
+            ))} */}
           </nav>
         </div>
       </div>

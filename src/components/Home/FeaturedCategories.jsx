@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const categories = [
   { name: 'Fashion', icon: '/image/fash.png', bg: 'bg-pink-50' },
@@ -14,13 +15,14 @@ const categories = [
 const FeaturedCategories = () => {
   return (
     <div className="container mx-auto py-10">
-      <h2 className="text- text-xl font-semibold mb-5">FEATURED CATEGORIES</h2>
+      <h2 className="text-xl font-semibold mb-5">FEATURED CATEGORIES</h2>
 
       <div className="flex justify-evenly gap-12 flex-wrap">
         {categories.map((cat, idx) => (
-          <div
+          <Link
             key={idx}
-            className={`flex flex-col items-center group cursor-pointer`}
+            to={'/category'} //
+            className="flex flex-col items-center group cursor-pointer"
           >
             {/* Circle Card */}
             <div
@@ -35,7 +37,7 @@ const FeaturedCategories = () => {
               />
             </div>
             <p className="mt-3 text-sm font-medium">{cat.name}</p>
-          </div>
+          </Link>
         ))}
       </div>
     </div>

@@ -9,6 +9,7 @@ import SkeletonCard from '../Product/SkeletonCard';
 import HScroller from '../Scroller/HScroller';
 import CategoryPills from '../Categories/CategoryPills';
 import ScrollableCategoryNav from '../ScrollableCategoryNav/ScrollableCategoryNav';
+import BannerAds from './BannerAds-popularProduct/BannerAds';
 
 export default function EcommerceHome() {
   const [activeCategory, setActiveCategory] = useState('Fashion');
@@ -124,6 +125,7 @@ export default function EcommerceHome() {
               </motion.div>
             )}
           </section>
+          <BannerAds />
         </div>
       </div>
     </div>

@@ -3,7 +3,16 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
-import { Truck, Gift, Tag, DollarSign, Mail } from 'lucide-react'; // advantage icons
+import {
+  Truck,
+  Gift,
+  Tag,
+  DollarSign,
+  Mail,
+  Facebook,
+  Twitter,
+  Instagram,
+} from 'lucide-react'; // advantage icons
 
 const advantages = [
   { id: 1, icon: <Tag size={20} />, text: 'Everyday fresh products' },
@@ -84,7 +93,7 @@ const Footer = () => {
     <div>
       {/* Newsletter Section */}
       <div className="bg-color text-white py-10 px-4 md:px-20 flex flex-col md:flex-row justify-between items-center gap-6  ">
-        <div className="container">
+        <div className="container ml-50">
           <p className="text-sm mb-2">$20 discount for your first order</p>
           <h2 className="text-2xl md:text-3xl font-bold mb-2">
             Join our newsletter and get...
@@ -126,9 +135,15 @@ const Footer = () => {
               1024: { slidesPerView: 4, spaceBetween: 40 },
             }}
           >
-            {advantages.map(adv => (
+            {advantages.map((adv, index) => (
               <SwiperSlide key={adv.id}>
-                <div className="flex items-center justify-center md:justify-start space-x-2 p-4 bg-white shadow rounded">
+                <div
+                  className={`flex items-center justify-center md:justify-start space-x-2 p-4 bg-white border-b border-gray-200 ${
+                    index !== advantages.length - 1
+                      ? 'border-r border-gray-200'
+                      : ''
+                  }`}
+                >
                   {adv.icon}
                   <span className="text-sm md:text-base font-medium">
                     {adv.text}
@@ -138,12 +153,13 @@ const Footer = () => {
             ))}
           </Swiper>
         </div>
-
         {/* Footer Links Section */}
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-8 py-10">
           {footerColumns.map((col, idx) => (
             <div key={idx}>
-              <h3 className="text-purple-700 font-bold mb-3">{col.title}</h3>
+              <h3 className="text-indigo-700 font-semibold mb-3">
+                {col.title}
+              </h3>
               <ul className="space-y-1 text-sm text-gray-600">
                 {col.items.map((item, i) => (
                   <li key={i}>{item}</li>
@@ -152,9 +168,24 @@ const Footer = () => {
             </div>
           ))}
         </div>
-
-        <div className="text-center text-sm text-gray-500 pb-6">
-          Copyright 2024. All rights reserved
+        <div className="flex justify-between">
+          <div className="text-center text-sm text-gray-500 pb-6">
+            Copyright 2024. All rights reserved
+          </div>
+          <div className="flex gap-3 ">
+            <Facebook
+              className="border rounded-full p-1 text-purple-800"
+              size={30}
+            />
+            <Twitter
+              className="border rounded-full p-1 text-purple-800"
+              size={30}
+            />
+            <Instagram
+              className="border rounded-full p-1 text-purple-800"
+              size={30}
+            />
+          </div>
         </div>
       </div>
     </div>

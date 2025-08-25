@@ -15,7 +15,7 @@ const banners = [
 
 const Banner = () => {
   return (
-    <div className="w-full py-4 bg-white relative">
+    <div className="w-full py-4 relative">
       <Swiper
         modules={[Navigation, Autoplay]}
         navigation={{ nextEl: '.custom-next', prevEl: '.custom-prev' }}
@@ -36,7 +36,7 @@ const Banner = () => {
               <img
                 src={banner.img}
                 alt="banner"
-                className="w-full h-[180px] sm:h-[250px] md:h-[380px] object-cover rounded-xl"
+                className="w-full h-fit sm:h-[250px] md:h-fit  rounded-xl object-contain"
               />
             </div>
           </SwiperSlide>

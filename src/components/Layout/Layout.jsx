@@ -3,6 +3,7 @@ import React from 'react';
 import { Outlet } from 'react-router-dom';
 import Navbar from '../Home/Navbar';
 import Footer from '../Home/Footer';
+import ScrollToTopButton from '../ScrollToTopButton/ScrollToTopButton';
 
 const Layout = () => {
   return (
@@ -10,6 +11,7 @@ const Layout = () => {
       <Navbar />
       <Outlet />
       <Footer />
+      <ScrollToTopButton />
     </div>
   );
 };
