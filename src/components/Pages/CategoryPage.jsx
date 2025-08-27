@@ -1,11 +1,15 @@
 import React, { useState } from 'react';
-import CategoryList from '../CategoryPage/Sidebar/CategoryList';
-import PriceFilter from '../CategoryPage/Sidebar/PriceFilter';
-import RatingFilter from '../CategoryPage/Sidebar/RatingFilter';
-import FeaturedProducts from '../CategoryPage/Sidebar/FeaturedProducts';
-import ProductGrid from '../CategoryPage/ProductGrid/ProductGrid';
-import ShowDropdown from '../CategoryPage/Controls/ShowDropdown';
-import ViewToggle from '../CategoryPage/Controls/ViewToggle';
+import SkeletonCard from '../Product/SkeletonCard';
+import ProductCard from '../Product/ProductCard';
+import { useCategoryProducts } from '../hooks/useCategoryProducts';
+import { useParams } from 'react-router-dom';
+// import CategoryList from '../CategoryPage/Sidebar/CategoryList';
+// import PriceFilter from '../CategoryPage/Sidebar/PriceFilter';
+// import RatingFilter from '../CategoryPage/Sidebar/RatingFilter';
+// import FeaturedProducts from '../CategoryPage/Sidebar/FeaturedProducts';
+// import ProductGrid from '../CategoryPage/ProductGrid/ProductGrid';
+// import ShowDropdown from '../CategoryPage/Controls/ShowDropdown';
+// import ViewToggle from '../CategoryPage/Controls/ViewToggle';
 
 const CategoryPage = ({ selectedCategoryFromNav }) => {
   const [selectedCategory, setSelectedCategory] = useState(
@@ -16,29 +20,52 @@ const CategoryPage = ({ selectedCategoryFromNav }) => {
   const [view, setView] = useState('grid3');
   const [limit, setLimit] = useState(20);
 
+  const { category } = useParams();
+  const { data: products, loading } = useCategoryProducts(category);
+
   return (
     <div className="grid grid-cols-12 gap-6 p-6">
       {/* Sidebar */}
       <aside className="col-span-3 space-y-6">
-        <CategoryList onSelect={setSelectedCategory} />
+        {/* <CategoryList onSelect={setSelectedCategory} />
         <PriceFilter priceRange={priceRange} setPriceRange={setPriceRange} />
         <RatingFilter setRating={setRating} />
-        <FeaturedProducts setSelectedCategory={setSelectedCategory} />
+        <FeaturedProducts setSelectedCategory={setSelectedCategory} /> */}
       </aside>
 
       {/* Main Products */}
       <main className="col-span-9">
         <div className="flex justify-between items-center mb-4">
-          <ShowDropdown limit={limit} setLimit={setLimit} />
-          <ViewToggle view={view} setView={setView} />
+          {/* <ShowDropdown limit={limit} setLimit={setLimit} />
+          <ViewToggle view={view} setView={setView} /> */}
         </div>
-        <ProductGrid
+        <div className="container mx-auto py-10">
+          <h2 className="text-2xl font-bold mb-6">
+            {category.toUpperCase()} PRODUCTS
+          </h2>
+
+          {loading ? (
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+              {Array.from({ length: 8 }).map((_, i) => (
+                <SkeletonCard key={i} />
+              ))}
+            </div>
+          ) : (
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+              {products.map(p => (
+                <ProductCard key={p.id} product={p} />
+              ))}
+            </div>
+          )}
+        </div>
+
+        {/* <ProductGrid
           category={selectedCategory}
           priceRange={priceRange}
           rating={rating}
           view={view}
           limit={limit}
-        />
+        /> */}
       </main>
     </div>
   );

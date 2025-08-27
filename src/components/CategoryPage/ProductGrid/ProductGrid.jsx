@@ -40,9 +40,11 @@ import ProductCard from './ProductCard';
 
 const ProductGrid = ({ category, priceRange, rating, view, limit }) => {
   const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(true); // Loading state
 
   useEffect(() => {
     const fetchProducts = async () => {
+      setLoading(true); // Loading শুরু
       let url = 'https://fakestoreapi.com/products';
       if (category && category !== 'all') {
         url = `https://fakestoreapi.com/products/category/${category}`;
@@ -51,7 +53,6 @@ const ProductGrid = ({ category, priceRange, rating, view, limit }) => {
       const res = await fetch(url);
       let data = await res.json();
 
-      // যদি API খালি দেয়, mock data generate
       if (!data || data.length === 0) {
         data = Array.from({ length: limit }, (_, i) => ({
           id: i + 1,
@@ -63,7 +64,6 @@ const ProductGrid = ({ category, priceRange, rating, view, limit }) => {
         }));
       }
 
-      // Fallback image fix
       data = data.map(p => ({
         ...p,
         image:
@@ -73,15 +73,14 @@ const ProductGrid = ({ category, priceRange, rating, view, limit }) => {
           'https://via.placeholder.com/200x200.png?text=No+Image',
       }));
 
-      // Price filter
       data = data.filter(
         p => p.price >= priceRange[0] && p.price <= priceRange[1]
       );
 
-      // Rating filter
       if (rating) data = data.filter(p => Math.round(p.rating.rate) >= rating);
 
       setProducts(data.slice(0, limit));
+      setLoading(false); // Loading শেষ
     };
 
     fetchProducts();
@@ -91,6 +90,14 @@ const ProductGrid = ({ category, priceRange, rating, view, limit }) => {
     view === 'grid3'
       ? 'grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-6'
       : 'grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6';
+
+  if (loading) {
+    return (
+      <div className="flex justify-center items-center min-h-[60vh]">
+        <div className="w-16 h-16 border-4 border-blue-500 border-t-transparent rounded-full animate-spin"></div>
+      </div>
+    );
+  }
 
   return (
     <div className={gridClass}>

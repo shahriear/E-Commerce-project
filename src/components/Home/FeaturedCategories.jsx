@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const categories = [
   { name: 'Fashion', icon: '/image/fash.png', bg: 'bg-pink-50' },
@@ -13,23 +13,26 @@ const categories = [
 ];
 
 const FeaturedCategories = () => {
+  const navigate = useNavigate();
+
+  const handleClick = catName => {
+    // Navigate to FeaturedCategoryPage with slug as param
+    navigate(`/featured/${catName}`);
+  };
+
   return (
     <div className="container mx-auto py-10">
       <h2 className="text-xl font-semibold mb-5">FEATURED CATEGORIES</h2>
-
       <div className="flex justify-evenly gap-12 flex-wrap">
-        {categories.map((cat, idx) => (
-          <Link
-            key={idx}
-            to={'/category'} //
-            className="flex flex-col items-center group cursor-pointer"
+        {categories.map(cat => (
+          <button
+            key={cat.name}
+            onClick={() => handleClick(cat.name)}
+            className="flex flex-col items-center group cursor-pointer bg-transparent border-none"
           >
-            {/* Circle Card */}
             <div
-              className={`w-30 h-30 flex items-center justify-center rounded-full border border-gray-200 ${cat.bg} 
-                transform transition-all duration-300 group-hover:-translate-y-2 hover:shadow-xl`}
+              className={`w-30 h-30 flex items-center justify-center rounded-full border border-gray-200 ${cat.bg} transform transition-all duration-300 group-hover:-translate-y-2 hover:shadow-xl`}
             >
-              {/* Inside Image with bounce on hover */}
               <img
                 src={cat.icon}
                 alt={cat.name}
@@ -37,7 +40,7 @@ const FeaturedCategories = () => {
               />
             </div>
             <p className="mt-3 text-sm font-medium">{cat.name}</p>
-          </Link>
+          </button>
         ))}
       </div>
     </div>

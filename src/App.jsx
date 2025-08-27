@@ -46,15 +46,19 @@ import {
 import Layout from './components/Layout/Layout';
 import Home from './components/Pages/Home';
 import { ToastContainer } from 'react-toastify';
-import CategoryPage from './components/Pages/CategoryPage';
+// import CategoryPage from './components/Pages/CategoryPage';
+import FeaturedCategoryPage from './components/Pages/FeaturedCategoryPage';
+import SearchResults from './components/SearchResults/SearchResults';
 
 function App() {
   const router = createBrowserRouter(
     createRoutesFromElements(
       <Route path="/" element={<Layout />}>
         <Route index element={<Home />} />
-        <Route path="category" element={<CategoryPage />} />
-        {/* <Route path="category" index element={<CategoryPage />} /> */}
+        {/* <Route path="featured/:category" element={<CategoryPage />} /> */}
+        <Route path="featured/:category" element={<FeaturedCategoryPage />} />
+
+        <Route path="/featured/search" element={<SearchResults />} />
       </Route>
     )
   );
