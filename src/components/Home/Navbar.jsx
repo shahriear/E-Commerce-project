@@ -51,16 +51,38 @@ const Navbar = () => {
   const [isCategoriesOpen, setIsCategoriesOpen] = useState(false);
   const [activeCategory, setActiveCategory] = useState(null);
   const [showMain, setShowMain] = useState(true);
-  const lastScrollY = useRef(0);
+  // const lastScrollY = useRef(0);
   const navigate = useNavigate();
+  const [show, setShow] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+
+      if (currentScrollY > lastScrollY && currentScrollY > 150) {
+        // নিচের দিকে স্ক্রল করলে এবং 150px এর বেশি হলে navbar hide হবে
+        setShow(false);
+      } else if (currentScrollY < lastScrollY && currentScrollY < 300) {
+        // উপরে উঠলে কিন্তু টপ থেকে 200px এর মধ্যে থাকলে navbar show হবে
+        setShow(true);
+      }
+
+      setLastScrollY(currentScrollY);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [lastScrollY]);
 
   // Hide/show navbar on scroll
   const controlNavbar = () => {
-    if (window.scrollY > lastScrollY.current) setShowMain(false);
+    if (window.scrollY > lastScrollY) setShowMain(false);
     else setShowMain(true);
-    lastScrollY.current = window.scrollY;
-  };
 
+    setLastScrollY(window.scrollY);
+  };
   useEffect(() => {
     window.addEventListener('scroll', controlNavbar);
     return () => window.removeEventListener('scroll', controlNavbar);
@@ -128,7 +150,7 @@ const Navbar = () => {
   return (
     <header
       className={`w-full border-b border-gray-200 bg-white sticky top-0 z-50 transition-transform duration-300 ${
-        showMain ? 'translate-y-0' : '-translate-y-24'
+        show ? 'translate-y-0' : '-translate-y-24'
       }`}
     >
       {/* Top Info */}
@@ -273,7 +295,7 @@ const Navbar = () => {
               <div key={idx} className="relative group">
                 <div
                   onClick={() => handleNavClick(link.name)}
-                  className="flex items-center gap-2 whitespace-nowrap hover:text-purple-700 rounded-full hover:bg-gray-200 px-3 py-2 transition cursor-pointer"
+                  className="flex items-center gap-2 whitespace-nowrap hover:text-purple-700 rounded-full hover:bg-gray-200 px-3 py-2 transition cursor-pointer text-[15px] uppercase"
                 >
                   <img
                     src={link.icon}

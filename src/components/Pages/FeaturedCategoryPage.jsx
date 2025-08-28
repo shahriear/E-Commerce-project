@@ -274,6 +274,8 @@ import RatingFilter from '../CategoryPage/Sidebar/RatingFilter';
 import ViewToggle from '../CategoryPage/Controls/ViewToggle';
 import ShowDropdown from '../CategoryPage/Controls/ShowDropdown';
 import ScrollableCategoryFilter from '../ScrollableCategoryNav/ScrollableCategoryFilter';
+import FeaturedProducts from '../Home/FeaturedProducts/FeaturedProducts';
+import SingleFeaturedSlider from '../CategoryPage/SingleFeatureProducts/SingleFeaturedSlider';
 
 // Main category slug mapping
 const CATEGORY_MAP = {
@@ -311,8 +313,8 @@ const FeaturedCategoryPage = () => {
   const [rating, setRating] = useState(0);
 
   // View & limit
-  const [view, setView] = useState('grid3');
-  const [limit, setLimit] = useState(10);
+  const [view, setView] = useState('grid4');
+  const [limit, setLimit] = useState(20);
 
   // Active sub-category
   const [activeSubCategory, setActiveSubCategory] = useState('');
@@ -396,6 +398,22 @@ const FeaturedCategoryPage = () => {
         />
         <PriceFilter priceRange={priceRange} setPriceRange={setPriceRange} />
         <RatingFilter setRating={setRating} />
+        <SingleFeaturedSlider />
+        {/* Left Banner */}
+        <aside className="lg:col-span-1">
+          <div className="sticky top-24 space-y-5">
+            <img
+              src="/ads1.jpg"
+              alt="Banner Ads"
+              className="w-[250px] h-auto object-cover rounded-lg shadow"
+            />
+            <img
+              src="/ads2.jpg"
+              alt="Banner Ads"
+              className="w-[250px] h-auto object-cover rounded-lg shadow"
+            />
+          </div>
+        </aside>
       </aside>
 
       {/* Right Side */}
@@ -422,7 +440,7 @@ const FeaturedCategoryPage = () => {
             className={`grid grid-cols-1 md:grid-cols-${productsPerRow} gap-4`}
           >
             {filteredProducts.map(p => (
-              <ProductCard key={p.id} product={p} />
+              <ProductCard key={p.id} product={p} view={view} />
             ))}
           </div>
         )}

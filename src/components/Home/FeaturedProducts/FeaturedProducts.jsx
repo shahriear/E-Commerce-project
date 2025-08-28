@@ -6,7 +6,7 @@ import ProductCard from '../../Product/ProductCard';
 import SkeletonCard from '../../Product/SkeletonCard';
 
 export default function FeaturedProducts() {
-  const { data: products, loading } = useProducts(12);
+  const { data: products, loading } = useProducts(19);
   const scrollRef = useRef(null);
   const [canScrollLeft, setCanScrollLeft] = useState(false);
   const [canScrollRight, setCanScrollRight] = useState(false);
@@ -35,7 +35,7 @@ export default function FeaturedProducts() {
   const scroll = direction => {
     const scrollEl = scrollRef.current;
     if (!scrollEl) return;
-    const scrollAmount = 300;
+    const scrollAmount = 900;
     scrollEl.scrollBy({
       left: direction === 'left' ? -scrollAmount : scrollAmount,
       behavior: 'smooth',
