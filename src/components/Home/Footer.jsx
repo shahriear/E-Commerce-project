@@ -13,6 +13,8 @@ import {
   Twitter,
   Instagram,
 } from 'lucide-react'; // advantage icons
+import { CiFacebook } from 'react-icons/ci';
+import { FaInstagram, FaTwitter } from 'react-icons/fa';
 
 const advantages = [
   { id: 1, icon: <Tag size={20} />, text: 'Everyday fresh products' },
@@ -168,23 +170,14 @@ const Footer = () => {
             </div>
           ))}
         </div>
-        <div className="flex justify-between">
+        <div className="flex justify-between items-center  pb-3 ">
           <div className="text-center text-sm text-gray-500 pb-6">
             Copyright 2024. All rights reserved
           </div>
-          <div className="flex gap-3 ">
-            <Facebook
-              className="border rounded-full p-1 text-purple-800"
-              size={30}
-            />
-            <Twitter
-              className="border rounded-full p-1 text-purple-800"
-              size={30}
-            />
-            <Instagram
-              className="border rounded-full p-1 text-purple-800"
-              size={30}
-            />
+          <div className="flex gap-3 text-4xl">
+            <CiFacebook className="text p-1 text-purple-800" />
+            <FaTwitter className=" p-1 text-purple-800" />
+            <FaInstagram className=" p-1 text-purple-800" />
           </div>
         </div>
       </div>

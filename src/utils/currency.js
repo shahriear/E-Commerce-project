@@ -1,1 +1,1 @@
-export const currency = n => `৳ ${Number(n).toLocaleString('en-US')}`;
+export const currency = n => `Rs ${Number(n).toLocaleString('en-US')}`;

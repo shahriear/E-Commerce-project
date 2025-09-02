@@ -1,3 +1,4 @@
+import { Star } from 'lucide-react';
 import React, { useState, useRef, useEffect } from 'react';
 
 export default function ProductTabs({
@@ -35,7 +36,7 @@ export default function ProductTabs({
           onClick={() => changeTab('description')}
           className={`px-4 py-2 rounded-full transition ${
             currentTab === 'description'
-              ? 'bg-purple-800 text-white'
+              ? 'bg-purple-900 text-white'
               : 'bg-white text-gray-700 hover:bg-gray-200 border border-gray-400'
           }`}
         >
@@ -45,7 +46,7 @@ export default function ProductTabs({
           onClick={() => changeTab('info')}
           className={`px-4 py-2 rounded-full transition ${
             currentTab === 'info'
-              ? 'bg-purple-800 text-white'
+              ? 'bg-purple-900 text-white'
               : 'bg-white text-gray-700 hover:bg-gray-200 border border-gray-400'
           }`}
         >
@@ -55,7 +56,7 @@ export default function ProductTabs({
           onClick={() => changeTab('reviews')}
           className={`px-4 py-2 rounded-full transition ${
             currentTab === 'reviews'
-              ? 'bg-purple-800 text-white'
+              ? 'bg-purple-900 text-white'
               : 'bg-white border border-gray-400 text-gray-700 hover:bg-gray-200'
           }`}
         >
@@ -95,10 +96,10 @@ export default function ProductTabs({
 
         {currentTab === 'reviews' && (
           <div ref={reviewsRef}>
-            <h3 className="font-semibold text-lg mb-4">
+            <h3 className="font-semibold text-2xl mb-7">
               Customer questions & answers
             </h3>
-            <div className="space-y-4 mb-6 w-3/5 ">
+            <div className="space-y-4 mb-6 w-3/5">
               {reviews?.map((review, i) => (
                 <div
                   key={i}
@@ -109,8 +110,20 @@ export default function ProductTabs({
                     <p className="text-sm text-gray-500">{review.date}</p>
                     <p className="mt-1 text-gray-700">{review.comment}</p>
                   </div>
-                  <div>
-                    <p className="text-yellow-500">⭐⭐⭐ {review.rating}</p>
+                  <div className="flex items-center space-x-1">
+                    {[...Array(5)].map((_, idx) => (
+                      <Star
+                        key={idx}
+                        size={16}
+                        strokeWidth={1.5}
+                        fill={idx < review.rating ? 'currentColor' : 'none'}
+                        className={
+                          idx < review.rating
+                            ? 'text-yellow-500'
+                            : 'text-gray-400'
+                        }
+                      />
+                    ))}
                   </div>
                 </div>
               ))}

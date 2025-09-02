@@ -104,6 +104,8 @@ import { currency } from '../../utils/currency';
 import ZoomableImage from '../ZoomableImage/ZoomableImage';
 import ProductTabs from './ProductTabs';
 import RelatedProducts from '../RelatedProducts/RelatedProducts';
+import { FaShoppingCart } from 'react-icons/fa';
+import { toast } from 'react-toastify';
 
 export default function ProductDetails() {
   const { id } = useParams();
@@ -260,7 +262,7 @@ export default function ProductDetails() {
 
             {/* Price & Discount */}
             <div className="flex items-center gap-3 mb-4">
-              <span className="text-2xl text-red-600 font-bold">
+              <span className="text-xl text-red-600 font-bold">
                 {currency(product.price)}
               </span>
               <span className="text-gray-500 line-through">
@@ -273,14 +275,16 @@ export default function ProductDetails() {
 
             {/* Stock */}
             {product.stock > 0 ? (
-              <p className="text-green-600 font-medium mb-2 bg-green-100 inline px-2 py-1 rounded-2xl">
+              <p className="text-green-600 font-normal mb-2 bg-green-100 inline px-2 py-0 rounded-2xl">
                 In stock
               </p>
             ) : (
-              <p className="text-red-600 font-medium mb-2">Out of stock</p>
+              <p className="text-red-600 font-normal mb-2 bg-red-100 inline px-2 py-0 rounded-2xl">
+                Out of stock
+              </p>
             )}
 
-            <p className="text-gray-700 leading-relaxed mb-6">
+            <p className="text-gray-700 leading-relaxed mb-6 mt-6">
               {product.description}
             </p>
 
@@ -288,13 +292,13 @@ export default function ProductDetails() {
             {isElectronics && (
               <div className="mb-5">
                 <div className="flex items-center gap-8">
-                  <h3 className="font-semibold mb-2">RAM:</h3>
+                  <h3 className="font-semibold mb-2 text-gray-900">RAM:</h3>
                   <div className="flex gap-2 flex-wrap">
                     {ramOptions.map(ram => (
                       <button
                         key={ram}
                         onClick={() => setSelectedRam(ram)}
-                        className={`px-4 py-2 rounded-lg border transition ${
+                        className={`px-2 py-1 rounded-lg text-gray-700 border transition ${
                           selectedRam === ram
                             ? 'bg-blue-600 text-white border-blue-600'
                             : 'bg-gray-100 border-gray-300 hover:bg-gray-200'
@@ -351,16 +355,19 @@ export default function ProductDetails() {
             </div>
 
             {/* Add to Cart */}
-            <button className="flex-1 sm:flex-none bg-pink-600 text-white px-8 py-3 rounded-full font-medium hover:bg-purple-900 transition">
-              Add to Cart
+            <button className="flex items-center gap-2 sm:flex-none bg-pink-600 text-white px-8 py-3 rounded-full font-medium hover:bg-purple-900 transition">
+              <FaShoppingCart /> Add to Cart
             </button>
 
             {/* Wishlist & Compare */}
             <div className="flex gap-2">
               {/* Wishlist */}
               <div className="relative group">
-                <button className="flex items-center gap-1 px-4 py-2 border rounded-lg hover:bg-pink-50 text-pink-600">
-                  <Heart size={16} /> Wishlist
+                <button
+                  className="flex items-center gap-1 px-4 py-2 border rounded-full hover:bg-pink-100 text-pink-600"
+                  onClick={() => toast.error('Please Login to continue')}
+                >
+                  <Heart size={16} />
                 </button>
                 <span className="absolute -top-8 left-1/2 -translate-x-1/2 px-2 py-1 text-xs text-white bg-gray-600 rounded opacity-0 group-hover:opacity-100 transition whitespace-nowrap">
                   Add to Wishlist
@@ -369,8 +376,11 @@ export default function ProductDetails() {
 
               {/* Compare */}
               <div className="relative group">
-                <button className="flex items-center gap-1 px-4 py-2 border rounded-lg hover:bg-gray-50 text-gray-600">
-                  <Shuffle size={16} /> Compare
+                <button
+                  className="flex items-center gap-1 px-4 py-2 border rounded-full hover:bg-gray-100 text-gray-600"
+                  onClick={() => toast.error('Please Login to continue')}
+                >
+                  <Shuffle size={16} />
                 </button>
                 <span className="absolute -top-8 left-1/2 -translate-x-1/2 px-2 py-1 text-xs text-white bg-gray-600 rounded opacity-0 group-hover:opacity-100 transition whitespace-nowrap">
                   Add to Compare

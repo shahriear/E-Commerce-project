@@ -1,32 +1,33 @@
 import React from 'react';
-import { List, LayoutGrid } from 'lucide-react';
+import { AlignLeft } from 'lucide-react';
+import { TfiLayoutGrid3Alt, TfiLayoutGrid4Alt } from 'react-icons/tfi';
 
 const ViewToggle = ({ view, setView }) => {
   return (
     <div className="flex gap-2">
       <button
-        className={`p-2 border rounded ${
-          view === 'list' ? 'bg-blue-500 text-white' : ''
+        className={`p-2   ${
+          view === 'list' ? 'bg-blue-400 rounded-md text-white' : ''
         }`}
         onClick={() => setView('list')}
       >
-        <List size={20} />
+        <AlignLeft size={20} />
       </button>
       <button
-        className={`p-2 border rounded ${
-          view === 'grid3' ? 'bg-blue-500 text-white' : ''
+        className={`p-2 text-md ${
+          view === 'grid3' ? 'bg-blue-400 rounded-md text-white' : ''
         }`}
         onClick={() => setView('grid3')}
       >
-        3x
+        <TfiLayoutGrid3Alt />
       </button>
       <button
-        className={`p-2 border rounded ${
-          view === 'grid4' ? 'bg-blue-500 text-white' : ''
+        className={`p-2 text-xl ${
+          view === 'grid4' ? 'bg-blue-400 rounded-md text-white' : ''
         }`}
         onClick={() => setView('grid4')}
       >
-        4x
+        <TfiLayoutGrid4Alt />
       </button>
     </div>
   );

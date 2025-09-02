@@ -273,7 +273,7 @@ export default function ProductCard({ product, view }) {
         {/* Image */}
         <div
           className={`overflow-hidden rounded-xl bg-gray-300 flex items-center justify-center relative 
-          ${isListView ? 'w-40 h-40 flex-shrink-0' : 'h-40 w-52'}`}
+          ${isListView ? 'w-40 h-40 flex-shrink-0' : 'h-50 w-53'}`}
         >
           <img
             src={mainImage}
@@ -318,11 +318,11 @@ export default function ProductCard({ product, view }) {
           </div>
 
           <div className="flex items-center gap-2">
+            <span className="text-gray-500 line-through font-medium">
+              {currency(oldPrice)}
+            </span>
             <span className="text-red-500 font-medium">
               {currency(product.price)}
-            </span>
-            <span className="text-gray-400 line-through">
-              {currency(oldPrice)}
             </span>
           </div>
         </div>

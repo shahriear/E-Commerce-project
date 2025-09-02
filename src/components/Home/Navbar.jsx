@@ -156,7 +156,7 @@ const Navbar = () => {
   const handleSuggestionClick = productId => {
     setQuery('');
     setShowSuggestions(false);
-    // ✅ সরাসরি ওই প্রোডাক্টের details এ পাঠানো হবে
+    //  সরাসরি ওই প্রোডাক্টের details এ পাঠানো হবে
     navigate(`/product/${productId}`);
   };
   const handleKeyDown = e => {

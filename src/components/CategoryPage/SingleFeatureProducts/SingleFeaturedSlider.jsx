@@ -53,6 +53,7 @@
 // };
 
 // export default SingleFeaturedSlider;
+
 import React, { useEffect, useState } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import ProductCard from '../../Product/ProductCard';
@@ -117,7 +118,7 @@ const SingleFeaturedSlider = () => {
       {/* Right Arrow inside card */}
       <button
         onClick={nextSlide}
-        className="absolute right-28 top-1/2 -translate-y-1/2 bg-white shadow rounded-full p-1 hover:bg-gray-100 z-10"
+        className="absolute right-28 top-1/2 -translate-y-1/2 bg-white  rounded-full p-1 hover:bg-gray-100 z-10"
       >
         <ChevronRight size={28} />
       </button>
