@@ -8,7 +8,7 @@ const categories = [
   { name: 'Fashion', sub: ['Man', 'Woman'], icon: '/image/fash.png' },
   {
     name: 'Electronics',
-    sub: ['Laptops', 'Smart Watch', 'Cameras'],
+    sub: ['Laptops', 'Accessories'],
     icon: '/image/ele.png',
   },
   { name: 'Bags', sub: ['Man Bags', 'Woman Bags'], icon: '/image/bag.png' },
@@ -28,7 +28,7 @@ const navLinks = [
   {
     name: 'Electronics',
     icon: '/image/ele.png',
-    sub: ['Laptops', 'Smart Watch', 'Cameras'],
+    sub: ['Laptops', 'Accessories'],
   },
   { name: 'Bags', icon: '/image/bag.png', sub: ['Man Bags', 'Woman Bags'] },
   {
@@ -125,26 +125,44 @@ const Navbar = () => {
   };
 
   // Submit search (Enter press or icon click)
-  const handleSearchSubmit = () => {
+  const handleSearchSubmit = async () => {
     const trimmedQuery = query.trim();
     if (!trimmedQuery) return;
 
-    setLoadingSearch(true);
-    navigate(`/featured/search?query=${encodeURIComponent(trimmedQuery)}`);
-    setShowSuggestions(false);
-    setTimeout(() => setLoadingSearch(false), 500);
-  };
+    try {
+      setLoadingSearch(true);
+      const res = await fetch(
+        `https://dummyjson.com/products/search?q=${encodeURIComponent(
+          trimmedQuery
+        )}`
+      );
+      const data = await res.json();
 
-  // Handle Enter key
-  const handleKeyDown = e => {
-    if (e.key === 'Enter') handleSearchSubmit();
+      if (data.products && data.products.length > 0) {
+        // ✅ প্রথম প্রোডাক্টের details এ রিডাইরেক্ট করবো
+        navigate(`/product/${data.products[0].id}`);
+      } else {
+        alert('No product found!');
+      }
+    } catch (err) {
+      console.error('Search error:', err);
+    } finally {
+      setLoadingSearch(false);
+      setShowSuggestions(false);
+    }
   };
 
   // Click suggestion
-  const handleSuggestionClick = productName => {
-    setQuery(productName);
+  const handleSuggestionClick = productId => {
+    setQuery('');
     setShowSuggestions(false);
-    navigate(`/featured/search?query=${encodeURIComponent(productName)}`);
+    // ✅ সরাসরি ওই প্রোডাক্টের details এ পাঠানো হবে
+    navigate(`/product/${productId}`);
+  };
+  const handleKeyDown = e => {
+    if (e.key === 'Enter') {
+      handleSearchSubmit();
+    }
   };
 
   return (
@@ -199,7 +217,7 @@ const Navbar = () => {
                 {suggestions.map(item => (
                   <div
                     key={item.id}
-                    onClick={() => handleSuggestionClick(item.title)}
+                    onClick={() => handleSuggestionClick(item.id)} // ✅ এখন id পাঠাচ্ছি
                     className="flex items-center gap-2 px-4 py-2 hover:bg-gray-100 cursor-pointer"
                   >
                     <img
@@ -295,14 +313,14 @@ const Navbar = () => {
               <div key={idx} className="relative group">
                 <div
                   onClick={() => handleNavClick(link.name)}
-                  className="flex items-center gap-2 whitespace-nowrap hover:text-purple-700 rounded-full hover:bg-gray-200 px-3 py-2 transition cursor-pointer text-[15px] uppercase"
+                  className="flex items-center  whitespace-nowrap hover:text-purple-700 rounded-full hover:bg-gray-200 px-2 py-1.5 transition cursor-pointer text-[px] uppercase"
                 >
                   <img
                     src={link.icon}
                     alt={link.name}
                     className="w-4 h-4 object-contain"
                   />
-                  {link.name}
+                  <p className="pl-1">{link.name}</p>
                 </div>
 
                 {link.sub.length > 0 && (

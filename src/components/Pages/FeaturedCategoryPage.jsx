@@ -624,7 +624,7 @@ export default FeaturedCategoryPage;
 //       {/* Right Side */}
 //       <div
 //         className={`flex-1 flex flex-col gap-4 ${
-//           !searchQuery ? 'lg:w-3/4' : ''
+
 //         }`}
 //       >
 //         {/* Top Controls */}

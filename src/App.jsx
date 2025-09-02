@@ -11,7 +11,8 @@ import Home from './components/Pages/Home';
 import { ToastContainer } from 'react-toastify';
 // import CategoryPage from './components/Pages/CategoryPage';
 import FeaturedCategoryPage from './components/Pages/FeaturedCategoryPage';
-import SearchResults from './components/SearchResults/SearchResults';
+// import SearchResults from './components/SearchResults/SearchResults';
+import ProductDetails from './components/ProductDetails/ProductDetails';
 
 function App() {
   const router = createBrowserRouter(
@@ -21,8 +22,9 @@ function App() {
         {/* <Route path="featured/:category" element={<CategoryPage />} /> */}
         <Route path="featured/:category" element={<FeaturedCategoryPage />} />
 
-        <Route path="/featured/search" element={<SearchResults />} />
+        {/* <Route path="/featured/search" element={<SearchResults />} /> */}
         <Route path="/category/:category" element={<FeaturedCategoryPage />} />
+        <Route path="/product/:id" element={<ProductDetails />} />
       </Route>
     )
   );

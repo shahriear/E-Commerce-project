@@ -44,3 +44,27 @@
 .product-image:hover img {
   transform: scale(1.1);
 }
+
+/* Hide scrollbar arrows (top-bottom button) */
+::-webkit-scrollbar-button {
+  display: none;
+}
+
+/* Make clean sticky bar */
+::-webkit-scrollbar {
+  width: 6px; /* bar width */
+  height: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #a1a1a1;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent; /* track clean thakbe */
+}
