@@ -12,7 +12,7 @@ const categories = [
   { name: 'Jewellery', icon: '/image/jw.png', bg: 'bg-green-200' },
 ];
 
-const FeaturedCategories = () => {
+const FeaturedManus = () => {
   const navigate = useNavigate();
 
   const handleClick = catName => {
@@ -47,4 +47,4 @@ const FeaturedCategories = () => {
   );
 };
 
-export default FeaturedCategories;
+export default FeaturedManus;

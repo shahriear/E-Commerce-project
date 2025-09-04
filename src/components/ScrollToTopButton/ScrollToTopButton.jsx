@@ -1,4 +1,3 @@
-// components/ScrollToTopButton.jsx
 import React, { useState, useEffect } from 'react';
 import { ChevronUp } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';

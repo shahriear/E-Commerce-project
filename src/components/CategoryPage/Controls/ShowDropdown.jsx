@@ -1,23 +1,3 @@
-// import React from 'react';
-
-// const ShowDropdown = ({ limit, setLimit }) => {
-//   return (
-//     <select
-//       value={limit}
-//       onChange={e => setLimit(+e.target.value)}
-//       className=" p-2 "
-//     >
-//       {[10, 20, 30, 40, 50, 60].map(n => (
-//         <option key={n} value={n}>
-//           Show {n}
-//         </option>
-//       ))}
-//     </select>
-//   );
-// };
-
-// export default ShowDropdown;
-
 import React, { useState } from 'react';
 import { ChevronDown } from 'lucide-react';
 
@@ -26,7 +6,7 @@ const ShowDropdown = ({ limit, setLimit }) => {
   const options = [10, 20, 30, 40, 50, 60];
 
   return (
-    <div className="relative w-32 z-50">
+    <div className="relative w-32 z-40">
       {/* Selected box */}
       <div
         className="p-2  flex items-center gap-3 cursor-pointer"

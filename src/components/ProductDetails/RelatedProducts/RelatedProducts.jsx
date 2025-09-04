@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
-import { currency } from '../../utils/currency';
+import { currency } from '../../../utils/currency';
 import { ChevronLeft, ChevronRight, Expand, Heart, Star } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
-import ProductModal from '../Model/ProductModal';
+import ProductModal from '../../Model/ProductModal';
 import { toast } from 'react-toastify';
 
 export default function RelatedProducts({ category, currentProductId }) {

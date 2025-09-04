@@ -3,16 +3,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
-import {
-  Truck,
-  Gift,
-  Tag,
-  DollarSign,
-  Mail,
-  Facebook,
-  Twitter,
-  Instagram,
-} from 'lucide-react'; // advantage icons
+import { Truck, Gift, Tag, DollarSign, Mail } from 'lucide-react';
 import { CiFacebook } from 'react-icons/ci';
 import { FaInstagram, FaTwitter } from 'react-icons/fa';
 

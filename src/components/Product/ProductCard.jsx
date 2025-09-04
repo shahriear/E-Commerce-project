@@ -1,218 +1,3 @@
-// import { useState } from 'react';
-// import { Star, Heart, ZoomIn, Expand } from 'lucide-react';
-// import { currency } from '../../utils/currency';
-// import { toast } from 'react-toastify';
-
-// export default function ProductCard({ product }) {
-//   const [hovered, setHovered] = useState(false);
-
-//   const discount =
-//     product.discountPercentage ?? Math.floor(Math.random() * 20) + 5;
-//   const oldPrice = (product.price / (1 - discount / 100)).toFixed(0);
-//   const rating = product.rating ?? 4.2;
-
-//   const mainImage = product.thumbnail;
-//   const hoverImage = product.images?.[1] || mainImage;
-
-//   return (
-//     <div
-//       className={`group relative rounded-2xl bg-gray-200 p-3 shadow-sm transition-all duration-300
-//     hover:shadow-xl hover:translate-y-0.5 cursor-pointer`}
-//       onMouseEnter={() => setHovered(true)}
-//       onMouseLeave={() => setHovered(false)}
-//     >
-//       {/* Discount badge */}
-//       <div className="absolute left-2 top-2 rounded-full bg-blue-600 px-2 py-0.5 text-xs font-semibold text-white z-10">
-//         {Math.round(discount)}%
-//       </div>
-
-//       {/* Hover actions (Top Right) */}
-//       <div
-//         className={`absolute top-2 right-2 flex flex-col gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-20`}
-//       >
-//         {/* Zoom button */}
-//         <button
-//           className="p-2 bg-white rounded-full shadow hover:bg-gray-100"
-//           onClick={() => alert(`Preview ${product.title}`)}
-//         >
-//           <Expand size={19} strokeWidth={1} />
-//         </button>
-
-//         {/* Love button */}
-//         <button
-//           className="p-2 bg-white rounded-full shadow hover:bg-red-100"
-//           onClick={() => toast.error('Please Login to continue')}
-//         >
-//           <Heart size={20} className="text-red-500" />
-//         </button>
-//       </div>
-
-//       <div className="h-40 w-48 overflow-hidden rounded-xl bg-gray-200 flex items-center justify-center relative">
-//         <img
-//           src={mainImage}
-//           alt={product.title}
-//           className={`absolute h-full w-full object-contain transition-all duration-500 ease-in-out ${
-//             hovered ? 'scale-105 opacity-0' : 'scale-100 opacity-100'
-//           }`}
-//           loading="lazy"
-//         />
-
-//         <img
-//           src={hoverImage}
-//           alt={product.title}
-//           className={`absolute h-full w-full object-contain transition-all duration-500 ease-in-out ${
-//             hovered ? 'scale-125 opacity-100' : 'scale-100 opacity-0'
-//           }`}
-//           loading="lazy"
-//         />
-//       </div>
-
-//       {/* Product info */}
-//       <div className="mt-3 space-y-1">
-//         <h3 className="line-clamp-2 text-[14px] font-bold text-gray-800 min-h-[20px] ">
-//           {product.title}
-//         </h3>
-//         <p className="text-green-600 font-medium pb-3">In stock</p>
-
-//         <div className="flex items-center gap-1 text-amber-500 text-xs">
-//           {Array.from({ length: 5 }).map((_, i) => (
-//             <Star
-//               key={i}
-//               size={14}
-//               fill={i < Math.round(rating) ? 'currentColor' : 'transparent'}
-//             />
-//           ))}
-//           <span className="ml-1 text-gray-500">{rating.toFixed(1)}</span>
-//         </div>
-//         <div className="flex items-center gap-2">
-//           <span className="text-red-500 font-medium text-sm md:text-base lg:text-lg truncate">
-//             {currency(product.price)}
-//           </span>
-//           <span className="text-gray-400 line-through text-xs md:text-sm truncate">
-//             {currency(oldPrice)}
-//           </span>
-//         </div>
-//       </div>
-//     </div>
-//   );
-// }
-
-// import { useState } from 'react';
-// import { Star, Heart, Expand } from 'lucide-react';
-// import { currency } from '../../utils/currency';
-// import { toast } from 'react-toastify';
-// import ProductModal from '../Model/ProductModal';
-
-// export default function ProductCard({ product, view }) {
-//   const [hovered, setHovered] = useState(false);
-//   const [showModal, setShowModal] = useState(false);
-
-//   const discount =
-//     product.discountPercentage ?? Math.floor(Math.random() * 20) + 5;
-//   const oldPrice = (product.price / (1 - discount / 100)).toFixed(0);
-//   const rating = product.rating ?? 4.2;
-
-//   const mainImage = product.thumbnail;
-//   const hoverImage = product.images?.[1] || mainImage;
-
-//   const isListView = view === 'list';
-
-//   return (
-//     <>
-//       <div
-//         className={`group relative rounded-2xl bg-gray-200 shadow-sm transition-all duration-300
-//         hover:shadow-xl hover:translate-y-0.5 cursor-pointer
-//         ${isListView ? 'flex items-center gap-4 p-3 h-[180px]' : 'p-3'}
-//       `}
-//         onMouseEnter={() => setHovered(true)}
-//         onMouseLeave={() => setHovered(false)}
-//       >
-//         {/* Discount badge */}
-//         <div className="absolute left-2 top-2 rounded-full bg-blue-600 px-2 py-0.5 text-xs font-semibold text-white z-10">
-//           {Math.round(discount)}%
-//         </div>
-//         {/* Hover actions */}
-//         <div className="absolute top-2 right-2 flex flex-col gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-20">
-//           <button
-//             className="p-2 bg-white rounded-full shadow hover:bg-gray-100"
-//             onClick={() => setShowModal(true)}
-//           >
-//             <Expand size={19} strokeWidth={1} />
-//           </button>
-//           <button
-//             className="p-2 bg-white rounded-full shadow hover:bg-red-100"
-//             onClick={() => toast.error('Please Login to continue')}
-//           >
-//             <Heart size={20} className="text-red-500" />
-//           </button>
-//         </div>
-
-//         {/* Image */}
-//         <div
-//           className={`overflow-hidden rounded-xl bg-gray-200 flex items-center justify-center relative
-//           ${isListView ? 'w-40 h-40 flex-shrink-0' : 'h-40 w-48'}`}
-//         >
-//           <img
-//             src={mainImage}
-//             alt={product.title}
-//             className={`absolute h-full w-full object-contain transition-all duration-500 ease-in-out ${
-//               hovered ? 'scale-105 opacity-0' : 'scale-100 opacity-100'
-//             }`}
-//           />
-//           <img
-//             src={hoverImage}
-//             alt={product.title}
-//             className={`absolute h-full w-full object-contain transition-all duration-500 ease-in-out ${
-//               hovered ? 'scale-125 opacity-100' : 'scale-100 opacity-0'
-//             }`}
-//           />
-//         </div>
-
-//         {/* Details */}
-//         <div
-//           className={`${isListView ? 'flex-1 space-y-1' : 'mt-3 space-y-1'}`}
-//         >
-//           <h3 className="line-clamp-2 text-[14px] font-bold text-gray-800">
-//             {product.title}
-//           </h3>
-
-//           {/* Stock check */}
-//           {product.stock > 0 ? (
-//             <p className="text-green-600 font-normal pb-1">In Stock</p>
-//           ) : (
-//             <p className="text-red-600 font-normal pb-1">Out of Stock</p>
-//           )}
-
-//           <div className="flex items-center gap-1 text-amber-500 text-xs">
-//             {Array.from({ length: 5 }).map((_, i) => (
-//               <Star
-//                 key={i}
-//                 size={14}
-//                 fill={i < Math.round(rating) ? 'currentColor' : 'transparent'}
-//               />
-//             ))}
-//             <span className="ml-1 text-gray-500">{rating.toFixed(1)}</span>
-//           </div>
-
-//           <div className="flex items-center gap-2">
-//             <span className="text-red-500 font-medium">
-//               {currency(product.price)}
-//             </span>
-//             <span className="text-gray-400 line-through">
-//               {currency(oldPrice)}
-//             </span>
-//           </div>
-//         </div>
-//       </div>
-
-//       {/* Modal */}
-//       {showModal && (
-//         <ProductModal product={product} onClose={() => setShowModal(false)} />
-//       )}
-//     </>
-//   );
-// }
-
 import { useState } from 'react';
 import { Star, Heart, Expand } from 'lucide-react';
 import { currency } from '../../utils/currency';
@@ -244,7 +29,6 @@ export default function ProductCard({ product, view }) {
       `}
         onMouseEnter={() => setHovered(true)}
         onMouseLeave={() => setHovered(false)}
-        // 🔥 এখানে navigate হবে product details এ
         onClick={() => navigate(`/product/${product.id}`)}
       >
         {/* Discount badge */}
@@ -254,7 +38,7 @@ export default function ProductCard({ product, view }) {
         {/* Hover actions */}
         <div
           className="absolute top-2 right-2 flex flex-col gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-20"
-          onClick={e => e.stopPropagation()} // ⚡ modal open করলে details এ navigate হবে না
+          onClick={e => e.stopPropagation()}
         >
           <button
             className="p-2 bg-white rounded-full shadow hover:bg-gray-100"
@@ -272,13 +56,13 @@ export default function ProductCard({ product, view }) {
 
         {/* Image */}
         <div
-          className={`overflow-hidden rounded-xl bg-gray-300 flex items-center justify-center relative 
-          ${isListView ? 'w-40 h-40 flex-shrink-0' : 'h-50 w-53'}`}
+          className={`overflow-hidden rounded-xl  flex items-center justify-center relative 
+          ${isListView ? 'w-40 h-40 flex-shrink-0' : 'h-50 w-51'}`}
         >
           <img
             src={mainImage}
             alt={product.title}
-            className={`absolute h-full w-full object-contain transition-all duration-500 ease-in-out ${
+            className={`absolute h-full w-full object-contain transition-all duration-500 ease-in-out  ${
               hovered ? 'scale-105 opacity-0' : 'scale-100 opacity-100'
             }`}
           />
@@ -286,7 +70,7 @@ export default function ProductCard({ product, view }) {
             src={hoverImage}
             alt={product.title}
             className={`absolute h-full w-full object-contain transition-all duration-500 ease-in-out ${
-              hovered ? 'scale-125 opacity-100' : 'scale-100 opacity-0'
+              hovered ? 'scale-104 opacity-100' : 'scale-100 opacity-0'
             }`}
           />
         </div>

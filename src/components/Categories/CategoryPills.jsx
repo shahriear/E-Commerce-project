@@ -1,38 +1,3 @@
-// import React from 'react';
-
-// export default function CategoryPills({
-//   categories,
-//   active,
-//   onClick,
-//   mobile = false,
-// }) {
-//   return (
-//     <>
-//       {categories.map(c => (
-//         <button
-//           key={c}
-//           onClick={() => onClick(c)}
-//           className={`rounded-full font-semibold transition ${
-//             mobile
-//               ? `px-3 py-1.5 text-xs ${
-//                   active === c
-//                     ? 'bg-blue-600 text-white'
-//                     : 'bg-white text-gray-700 border'
-//                 }`
-//               : `px-4 py-2 text-sm ${
-//                   active === c
-//                     ? 'bg-blue-600 text-white'
-//                     : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-//                 }`
-//           }`}
-//         >
-//           {c}
-//         </button>
-//       ))}
-//     </>
-//   );
-// }
-
 import React, { useRef, useState, useEffect } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 

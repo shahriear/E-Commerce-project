@@ -1,4 +1,3 @@
-// hooks/useProducts.js
 import { useEffect, useState } from 'react';
 
 export function useProducts(limit = 12) {

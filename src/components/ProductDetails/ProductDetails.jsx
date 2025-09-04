@@ -1,109 +1,10 @@
-// import { useParams } from 'react-router-dom';
-// import { useEffect, useState } from 'react';
-
-// export default function ProductDetails() {
-//   const { id } = useParams();
-//   const [product, setProduct] = useState(null);
-//   const [selectedRam, setSelectedRam] = useState(null);
-//   const [selectedSize, setSelectedSize] = useState(null);
-
-//   // RAM & Size options
-//   const ramOptions = ['4GB', '6GB', '8GB', '12GB'];
-//   const sizeOptions = ['S', 'M', 'L', 'XL', 'XXL'];
-
-//   useEffect(() => {
-//     fetch(`https://dummyjson.com/products/${id}`)
-//       .then(res => res.json())
-//       .then(data => setProduct(data));
-//   }, [id]);
-
-//   if (!product) return <p className="p-6">Loading...</p>;
-
-//   // Category check
-//   const isElectronics =
-//     product.category === 'smartphones' || product.category === 'laptops';
-//   const isClothing =
-//     product.category === 'mens-shirts' ||
-//     product.category === 'womens-dresses' ||
-//     product.category === 'tops';
-
-//   return (
-//     <div className="container mx-auto grid md:grid-cols-2 gap-6 p-6">
-//       {/* Product Image */}
-//       <div>
-//         <img
-//           src={product.thumbnail}
-//           alt={product.title}
-//           className="rounded-xl w-full max-w-sm mx-auto"
-//         />
-//       </div>
-
-//       {/* Product Info */}
-//       <div>
-//         <h1 className="text-2xl font-bold mb-2">{product.title}</h1>
-//         <p className="text-gray-600 mb-4">{product.description}</p>
-//         <p className="text-xl font-bold text-red-500 mb-4">৳ {product.price}</p>
-
-//         {/* ✅ Show RAM options for electronics */}
-//         {isElectronics && (
-//           <div className="mb-4">
-//             <h3 className="font-semibold mb-2">Select RAM:</h3>
-//             <div className="flex gap-2 flex-wrap">
-//               {ramOptions.map(ram => (
-//                 <button
-//                   key={ram}
-//                   onClick={() => setSelectedRam(ram)}
-//                   className={`px-4 py-2 rounded-lg border transition ${
-//                     selectedRam === ram
-//                       ? 'bg-blue-600 text-white border-blue-600'
-//                       : 'bg-gray-100 border-gray-300 hover:bg-gray-200'
-//                   }`}
-//                 >
-//                   {ram}
-//                 </button>
-//               ))}
-//             </div>
-//           </div>
-//         )}
-
-//         {/* ✅ Show Size options for clothing */}
-//         {isClothing && (
-//           <div className="mb-4">
-//             <h3 className="font-semibold mb-2">Select Size:</h3>
-//             <div className="flex gap-2 flex-wrap">
-//               {sizeOptions.map(size => (
-//                 <button
-//                   key={size}
-//                   onClick={() => setSelectedSize(size)}
-//                   className={`px-4 py-2 rounded-lg border transition ${
-//                     selectedSize === size
-//                       ? 'bg-green-600 text-white border-green-600'
-//                       : 'bg-gray-100 border-gray-300 hover:bg-gray-200'
-//                   }`}
-//                 >
-//                   {size}
-//                 </button>
-//               ))}
-//             </div>
-//           </div>
-//         )}
-
-//         {/* Add to Cart */}
-//         <button className="w-full bg-pink-600 text-white px-6 py-3 rounded-lg hover:bg-pink-700 transition">
-//           Add to Cart
-//         </button>
-//       </div>
-//     </div>
-//   );
-// }
-
 import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { Heart, Shuffle, Star } from 'lucide-react';
 import { currency } from '../../utils/currency';
 import ZoomableImage from '../ZoomableImage/ZoomableImage';
 import ProductTabs from './ProductTabs';
-import RelatedProducts from '../RelatedProducts/RelatedProducts';
+import RelatedProducts from '../ProductDetails/RelatedProducts/RelatedProducts';
 import { FaShoppingCart } from 'react-icons/fa';
 import { toast } from 'react-toastify';
 
@@ -115,22 +16,51 @@ export default function ProductDetails() {
   const [quantity, setQuantity] = useState(1);
   const [selectedImage, setSelectedImage] = useState(null);
 
-  // 🔥 New state for controlling tabs
+  //  New state for controlling tabs
   const [activeTab, setActiveTab] = useState('description');
+
+  const [loading, setLoading] = useState(true); // ✅ loading state
+
+  // useEffect(() => {
+  //   fetch(`https://dummyjson.com/products/${id}`)
+  //     .then(res => res.json())
+  //     .then(data => {
+  //       setProduct(data);
+  //       setSelectedImage(data.thumbnail);
+  //     });
+  // }, [id]);
 
   const ramOptions = ['4GB', '6GB', '8GB', '12GB'];
   const sizeOptions = ['S', 'M', 'L', 'XL', 'XXL'];
 
   useEffect(() => {
-    fetch(`https://dummyjson.com/products/${id}`)
-      .then(res => res.json())
-      .then(data => {
+    const fetchProduct = async () => {
+      setLoading(true); // ✅ product change হলে spinner শুরু
+      try {
+        const res = await fetch(`https://dummyjson.com/products/${id}`);
+        const data = await res.json();
         setProduct(data);
         setSelectedImage(data.thumbnail);
-      });
+      } catch (err) {
+        console.error('Error fetching product:', err);
+      } finally {
+        setLoading(false); // ✅ fetch শেষ হলে spinner বন্ধ
+      }
+    };
+
+    fetchProduct();
   }, [id]);
 
-  if (!product) return <p className="p-6 text-center my-64">Loading...</p>;
+  if (loading) {
+    return (
+      <div className="flex justify-center items-center h-[70vh]">
+        <div className="w-12 h-12 border-4 border-gray-300 border-b-blue-800 rounded-full animate-spin"></div>
+      </div>
+    );
+  }
+
+  if (!product)
+    return <p className="p-6 text-center my-64">Product not found...</p>;
 
   const isElectronics =
     product.category === 'smartphones' || product.category === 'laptops';
@@ -251,7 +181,7 @@ export default function ProductDetails() {
                 </span>
               </div>
 
-              {/* 🔥 Clickable Review count */}
+              {/*  Clickable Review count */}
               <button
                 onClick={() => setActiveTab('reviews')}
                 className="text-gray-400 hover:text-pink-600 transition"
@@ -355,7 +285,10 @@ export default function ProductDetails() {
             </div>
 
             {/* Add to Cart */}
-            <button className="flex items-center gap-2 sm:flex-none bg-pink-600 text-white px-8 py-3 rounded-full font-medium hover:bg-purple-900 transition">
+            <button
+              className="flex items-center gap-2 sm:flex-none bg-pink-600 text-white px-8 py-3 rounded-full font-medium hover:bg-purple-900 transition"
+              onClick={() => toast.error('Please Login to continue')}
+            >
               <FaShoppingCart /> Add to Cart
             </button>
 
@@ -401,7 +334,7 @@ export default function ProductDetails() {
           setActiveTab={setActiveTab}
         />
       </div>
-      {/* 🔥 Related Products Section */}
+      {/*  Related Products Section */}
       <RelatedProducts
         category={product.category}
         currentProductId={product.id}
