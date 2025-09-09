@@ -86,7 +86,7 @@ const Footer = () => {
     <div>
       {/* Newsletter Section */}
       <div className="bg-color text-white py-10 px-4 md:px-20 flex flex-col md:flex-row justify-between items-center gap-6  ">
-        <div className="container ml-50">
+        <div className="container ">
           <p className="text-sm mb-2">$20 discount for your first order</p>
           <h2 className="text-2xl md:text-3xl font-bold mb-2">
             Join our newsletter and get...

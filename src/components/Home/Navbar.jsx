@@ -350,6 +350,8 @@ import React, { useState, useEffect } from 'react';
 import { Menu, X, ChevronDown, ShoppingBag, Search } from 'lucide-react';
 import { Link, useNavigate } from 'react-router-dom';
 import SearchPopup from '../Popup/SearchPopup';
+import { FiShoppingBag } from 'react-icons/fi';
+import { HiOutlineShoppingBag } from 'react-icons/hi';
 
 const categories = [
   { name: 'Fashion', sub: ['Man', 'Woman'], icon: '/image/fash.png' },
@@ -517,7 +519,7 @@ const Navbar = () => {
         }`}
       >
         {/* Top Info */}
-        <div className="bg-color text-white text-sm py-1 text-center">
+        <div className="bg-color text-white py-1 text-center md:text-sm text-[10px] ">
           Due to the <span className="font-semibold">COVID-19</span> epidemic,
           orders may be processed with a slight delay
         </div>
@@ -710,8 +712,14 @@ const Navbar = () => {
           </Link>
 
           {/* Mobile Right Cart */}
-          <div className="md:hidden">
-            <ShoppingBag size={24} />
+          <div className="relative w-10 h-10 cursor-pointer">
+            {/* Cart Icon */}
+            <HiOutlineShoppingBag className="w-full h-9 p-2 text-red-400 bg-red-100 rounded-full" />
+
+            {/* Badge */}
+            <span className="absolute -top-1 -right-1 bg-red-600 text-white text-xs w-4 h-4 rounded-full flex items-center justify-center font-bold shadow-md">
+              0
+            </span>
           </div>
 
           {/* Desktop Right */}
@@ -731,11 +739,14 @@ const Navbar = () => {
               <img
                 src="/logo.jpg"
                 alt="Logo"
-                className="w-10 h-10 object-cover rounded-full"
+                className="w-fit h-10 object-cover rounded-full"
               />
             </Link>
             <button onClick={() => setSidebarOpen(false)}>
-              <X size={24} />
+              <X
+                size={26}
+                className="bg-gray-200 rounded-full hover:bg-blue-100 p-0.5 "
+              />
             </button>
           </div>
 
@@ -743,26 +754,37 @@ const Navbar = () => {
           <SearchPopup />
 
           {/* Categories */}
-          <div className="flex flex-col gap-2 mt-4">
+          <div className="flex flex-col gap-3 mt-4 ">
             {categories.map((cat, idx) => (
               <div key={idx} className="flex flex-col">
                 <div
-                  className="flex items-center gap-2 cursor-pointer hover:text-purple-700"
+                  className="flex items-center justify-between cursor-pointer hover:bg-gray-100 py-2 px-2 rounded-2xl font-semibold"
                   onClick={() => toggleCategory(cat)}
                 >
-                  {cat.icon && <img src={cat.icon} className="w-5 h-5" />}
-                  <span>{cat.name}</span>
+                  <div className="flex items-center gap-2">
+                    {cat.icon && <img src={cat.icon} className="w-5 h-5" />}
+                    <span>{cat.name}</span>
+                  </div>
+
                   {cat.sub.length > 0 && (
                     <ChevronDown
-                      className={`w-4 h-4 transition-transform ${
+                      size={20}
+                      className={` transform transition-transform duration-500 rounded-2xl bg-gray-100  ${
                         activeCategory === cat.name ? 'rotate-180' : ''
                       }`}
                     />
                   )}
                 </div>
 
-                {cat.sub.length > 0 && activeCategory === cat.name && (
-                  <div className="pl-6 flex flex-col mt-1 gap-1">
+                {cat.sub.length > 0 && (
+                  <div
+                    className={`pl-6 flex flex-col mt-1 gap-2 overflow-hidden transition-all duration-500 ease-in-out  
+                      ${
+                        activeCategory === cat.name
+                          ? 'max-h-40 opacity-100'
+                          : 'max-h-0 opacity-0'
+                      }`}
+                  >
                     {cat.sub.map((sub, i) => (
                       <div
                         key={i}
@@ -770,7 +792,7 @@ const Navbar = () => {
                           handleCategoryClick(sub);
                           setSidebarOpen(false);
                         }}
-                        className="cursor-pointer hover:text-purple-700"
+                        className="cursor-pointer hover:text-purple-700 bg-gray-100 rounded-xl"
                       >
                         {sub}
                       </div>
@@ -782,7 +804,7 @@ const Navbar = () => {
           </div>
 
           {/* Sign In */}
-          <button className="mt-6 bg-purple-600 text-white px-4 py-2 rounded-full">
+          <button className="mt-6 bg-color text-white px-4 py-2 rounded-xl hover:bg-indigo-900">
             Sign In
           </button>
         </div>
@@ -791,7 +813,7 @@ const Navbar = () => {
       {/* Sidebar Overlay */}
       {sidebarOpen && (
         <div
-          className="fixed inset-0 bg-black/60 z-40"
+          className="fixed inset-0 bg-black/70 z-40"
           onClick={() => setSidebarOpen(false)}
         ></div>
       )}
