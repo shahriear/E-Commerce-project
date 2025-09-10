@@ -352,6 +352,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import SearchPopup from '../Popup/SearchPopup';
 import { FiShoppingBag } from 'react-icons/fi';
 import { HiOutlineShoppingBag } from 'react-icons/hi';
+import ScrollContainer from 'react-indiana-drag-scroll';
 
 const categories = [
   { name: 'Fashion', sub: ['Man', 'Woman'], icon: '/image/fash.png' },
@@ -694,35 +695,52 @@ const Navbar = () => {
           </div>
         </div>
 
-        <div className="container mx-auto px-4 flex justify-between items-center md:hidden h-16">
-          {/* Mobile Left Menu Icon */}
-          <div className="md:hidden flex items-center">
+        <div className="md:hidden border-b border-gray-200 bg-white sticky top-0 z-50">
+          {/* Top Row: Menu + Logo + Cart */}
+          <div className="flex justify-between items-center h-16 px-4">
+            {/* Left Menu Icon */}
             <button onClick={() => setSidebarOpen(true)}>
               <Menu size={24} />
             </button>
+
+            {/* Logo */}
+            <Link to="/" className="mx-auto">
+              <img
+                src="/logo.jpg"
+                alt="Logo"
+                className="h-10 w-fit object-cover rounded-full"
+              />
+            </Link>
+
+            {/* Cart */}
+            <div className="relative w-10 h-10 cursor-pointer">
+              <HiOutlineShoppingBag className="w-full h-9 p-2 text-red-400 bg-red-100 rounded-full" />
+              <span className="absolute -top-1 -right-1 bg-red-600 text-white text-xs w-4 h-4 rounded-full flex items-center justify-center font-bold shadow-md">
+                0
+              </span>
+            </div>
           </div>
 
-          {/* Logo */}
-          <Link to="/" className="text-2xl font-bold mx-auto md:mx-0 md:hidden">
-            <img
-              src="/logo.jpg"
-              alt="Logo"
-              className="w-fit h-10 object-cover rounded-full"
-            />
-          </Link>
-
-          {/* Mobile Right Cart */}
-          <div className="relative w-10 h-10 cursor-pointer">
-            {/* Cart Icon */}
-            <HiOutlineShoppingBag className="w-full h-9 p-2 text-red-400 bg-red-100 rounded-full" />
-
-            {/* Badge */}
-            <span className="absolute -top-1 -right-1 bg-red-600 text-white text-xs w-4 h-4 rounded-full flex items-center justify-center font-bold shadow-md">
-              0
-            </span>
-          </div>
-
-          {/* Desktop Right */}
+          {/* Bottom Row: Drag + Scrollable Nav Links */}
+          <ScrollContainer
+            className="flex gap-4 px-4 py-2 overflow-x-auto scrollbar-hide cursor-grab"
+            vertical={false}
+          >
+            {navLinks.map((link, idx) => (
+              <div
+                key={idx}
+                onClick={() => handleNavClick(link.name)}
+                className="flex items-center gap-1 whitespace-nowrap font-semibold rounded-full px-3 py-1.5 text-sm hover:text-purple-600 cursor-pointer"
+              >
+                <img
+                  src={link.icon}
+                  alt={link.name}
+                  className="w-4 h-4 object-contain"
+                />
+                <span>{link.name}</span>
+              </div>
+            ))}
+          </ScrollContainer>
         </div>
       </header>
 

@@ -257,7 +257,7 @@ const BottomNav = () => {
 
   return (
     <>
-      {/* 🔽 Bottom Nav */}
+      {/*  Bottom Nav */}
       <div className="fixed bottom-0 left-0 w-full bg-white border-t border-gray-200 shadow-md z-40 md:hidden">
         <div className="flex justify-around items-center h-14 text-gray-700 text-sm">
           <button
@@ -312,10 +312,10 @@ const BottomNav = () => {
         </div>
       </div>
 
-      {/* 🔽 Fullscreen Search Overlay */}
+      {/*  Fullscreen Search Overlay */}
       {searchOpen && (
         <div className="fixed inset-0 bg-white z-50 flex flex-col">
-          <div className="flex items-center p-3 border-b border-gray-300">
+          <div className="flex  items-center p-3 border-b border-gray-300">
             <button
               onClick={() => setSearchOpen(false)}
               className="mr-3 text-gray-600"
