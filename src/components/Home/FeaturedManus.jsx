@@ -72,7 +72,7 @@ const FeaturedManus = () => {
   };
 
   return (
-    <div className="md:container mx-auto py-10 ml-3">
+    <div className="md:container mx-auto pt-5 pb-4 md:pb-10 ml-3">
       <h2 className="text-xl font-semibold mb-5">FEATURED CATEGORIES</h2>
 
       {/* Scrollable Drag Container */}
