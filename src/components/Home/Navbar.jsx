@@ -730,7 +730,10 @@ const Navbar = () => {
               <div
                 key={idx}
                 onClick={() => handleNavClick(link.name)}
-                className="flex items-center gap-1 whitespace-nowrap font-semibold rounded-full px-3 py-1.5 text-sm hover:text-purple-600 cursor-pointer"
+                className="flex items-center gap-1 whitespace-nowrap 
+                rounded-full px-3 py-1.5 text-sm 
+              hover:text-purple-600 active:scale-95 active:bg-gray-300 
+                transition transform duration-150 cursor-pointer select-none"
               >
                 <img
                   src={link.icon}

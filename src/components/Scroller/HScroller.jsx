@@ -40,7 +40,7 @@ export default function HScroller({ children }) {
         <button
           aria-label="Prev"
           onClick={() => scrollByAmount(-1)}
-          className="absolute -left-3 top-1/2 z-10 -translate-y-1/2 rounded-full bg-white shadow p-2 hover:shadow-md "
+          className="absolute -left-3 top-1/2 z-10 -translate-y-1/2 rounded-full bg-white shadow p-2 hover:shadow-md hidden md:flex"
         >
           <ChevronLeft />
         </button>
@@ -55,7 +55,7 @@ export default function HScroller({ children }) {
         <button
           aria-label="Next"
           onClick={() => scrollByAmount(1)}
-          className="absolute -right-3 top-1/2 z-10 -translate-y-1/2 rounded-full bg-white shadow p-2 hover:shadow-md"
+          className="absolute -right-3 top-1/2 z-10 -translate-y-1/2 rounded-full bg-white shadow p-2 hover:shadow-md hidden md:flex"
         >
           <ChevronRight />
         </button>

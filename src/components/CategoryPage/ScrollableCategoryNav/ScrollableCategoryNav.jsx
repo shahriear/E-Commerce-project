@@ -26,13 +26,13 @@ function ScrollableCategoryNav({ categories, active, onClick }) {
       {/* Scrollable Pills */}
       <div
         ref={scrollRef}
-        className="flex overflow-x-auto gap- px-6 scrollbar-hide scroll-smooth"
+        className="flex overflow-x-auto gap- md:px-6 scrollbar-hide scroll-smooth"
       >
         {categories.map(cat => (
           <button
             key={cat}
             onClick={() => onClick(cat)}
-            className={`flex-shrink-0 min-w-[105px] px-4 py-2 text-sm font-medium border-b-2 transition-colors duration-500 ${
+            className={`flex-shrink-0  md:min-w-[105px] px-4 py-2 text-sm font-medium border-b-2 transition-colors duration-500 ${
               active === cat
                 ? 'border-blue-600 text-blue-600'
                 : 'border-transparent text-gray-700 hover:text-gray-700 '

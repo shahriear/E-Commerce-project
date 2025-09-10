@@ -93,3 +93,4 @@ export default function CategoryPills({
     </div>
   );
 }
+//dlt hoite paree..........
