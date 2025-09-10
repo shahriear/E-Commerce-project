@@ -175,7 +175,7 @@ const Banner = () => {
               <img
                 src={banner.img}
                 alt={`Banner ${banner.id}`}
-                className="w-full h-full sm:h-full md:h-full lg:h-full xl:h-full object-cover px-2 md:px-0"
+                className="w-full h-full sm:h-full md:h-full lg:h-full xl:h-full object-cover px-2 md:px-0 rounded-2xl"
               />
             </div>
           </SwiperSlide>

@@ -69,6 +69,9 @@ const banners = [
   { id: 2, img: '/BannerAds2.jpg' },
   { id: 3, img: '/BannerAds3.jpg' },
   { id: 4, img: '/BannerAds4.jpg' },
+  { id: 5, img: '/BannerAds2.jpg' },
+  { id: 6, img: '/BannerAds3.jpg' },
+  { id: 7, img: '/BannerAds4.jpg' },
 ];
 
 const BannerAds = () => {
@@ -78,7 +81,6 @@ const BannerAds = () => {
         modules={[Navigation, Autoplay]}
         navigation={{ nextEl: '.custom-next', prevEl: '.custom-prev' }}
         autoplay={{ delay: 3000, disableOnInteraction: false }}
-        loop
         spaceBetween={24}
         breakpoints={{
           0: { slidesPerView: 1.5 }, // Mobile

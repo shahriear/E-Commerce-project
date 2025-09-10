@@ -43,7 +43,7 @@ export default function FeaturedProducts() {
   };
 
   return (
-    <div className="max-w-7xl mx-auto py-6 space-y-6 relative">
+    <div className="max-w-7xl mx-auto py-6  space-y-6 relative pl-4 md:pl-0 ">
       <div>
         <h2 className="text-xl font-bold">FEATURED PRODUCTS</h2>
         <p className="text-sm text-gray-500">
@@ -55,7 +55,7 @@ export default function FeaturedProducts() {
         {canScrollLeft && (
           <button
             onClick={() => scroll('left')}
-            className="absolute left-0 top-1/2 -translate-y-1/2 bg-white p-2 rounded-full shadow z-10"
+            className="absolute left-0 top-1/2 -translate-y-1/2 bg-white p-2 rounded-full shadow z-10 hidden md:flex"
           >
             <ChevronLeft />
           </button>
@@ -63,7 +63,7 @@ export default function FeaturedProducts() {
         {canScrollRight && (
           <button
             onClick={() => scroll('right')}
-            className="absolute right-0 top-1/2 -translate-y-1/2 bg-white p-2 rounded-full shadow z-10"
+            className="absolute right-0 top-1/2 -translate-y-1/2 bg-white p-2 rounded-full shadow z-10 hidden md:flex "
           >
             <ChevronRight />
           </button>
