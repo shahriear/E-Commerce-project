@@ -36,10 +36,10 @@ export default function ScrollToTopButton() {
           animate={{ opacity: 1, y: 0, scale: 1 }}
           exit={{ opacity: 0, y: 50, scale: 0.8 }}
           transition={{ duration: 0.3, ease: 'easeInOut' }}
-          className="fixed bottom-30 right-6 bg-purple-500 text-white p-3 rounded-full shadow-xl 
-                     hover:bg-purple-600 transition-colors z-30"
+          className="fixed bottom-30 right-6 bg-purple-600 text-white p-2 md:p-3 rounded-full shadow-xl 
+                     hover:bg-purple-500 transition-colors z-30"
         >
-          <ChevronUp size={24} />
+          <ChevronUp size={23} />
         </motion.button>
       )}
     </AnimatePresence>

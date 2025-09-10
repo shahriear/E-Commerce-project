@@ -23,7 +23,7 @@ export default function ProductCard({ product, view }) {
   return (
     <>
       <div
-        className={`group relative rounded-2xl bg-gray-200 shadow-sm transition-all duration-300
+        className={`group relative rounded-2xl bg-gray-200 shadow-sm transition-all duration-300 
         hover:shadow-xl hover:translate-y-0.5 cursor-pointer
         ${isListView ? 'flex items-center gap-4 p-3 h-[180px]' : 'p-3'}
       `}
@@ -56,7 +56,7 @@ export default function ProductCard({ product, view }) {
 
         {/* Image */}
         <div
-          className={`overflow-hidden rounded-xl  flex items-center justify-center relative 
+          className={`overflow-hidden rounded-xl  flex items-center justify-center relative bg-gray-100 m-auto
           ${
             isListView
               ? 'w-40 h-40 flex-shrink-0'
@@ -66,14 +66,14 @@ export default function ProductCard({ product, view }) {
           <img
             src={mainImage}
             alt={product.title}
-            className={`absolute h-full w-full object-contain transition-all duration-500 ease-in-out  ${
+            className={`absolute h-full w-full object-contain transition-all duration-500 ease-in-out   ${
               hovered ? 'scale-105 opacity-0' : 'scale-100 opacity-100'
             }`}
           />
           <img
             src={hoverImage}
             alt={product.title}
-            className={`absolute h-full w-full object-contain transition-all duration-500 ease-in-out ${
+            className={`absolute h-full w-full object-contain transition-all duration-500 ease-in-out  ${
               hovered ? 'scale-104 opacity-100' : 'scale-100 opacity-0'
             }`}
           />

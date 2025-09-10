@@ -103,24 +103,29 @@ export default function DynamicSection() {
   if (!category) return null;
 
   return (
-    <div className="max-w-7xl mx-auto py-6 relative">
+    <div className="max-w-7xl mx-auto py-6 pl-4 relative">
       {/* Title + View All */}
       <div className="flex items-center justify-between mb-3">
-        <h2 className="text-xl font-bold">{category.toUpperCase()}</h2>
+        <div>
+          <h2 className="text-xl font-bold">{category.toUpperCase()}</h2>
+          <p className="text-xs text-gray-500">
+            Do not miss the current offers until the end of March.
+          </p>
+        </div>
 
         <button
           onClick={handleViewAll}
-          className="text-gray-500 font-medium hover:underline flex items-center gap-1 border rounded-full px-3 py-1"
+          className="text-gray-500 font-semibold md:font-medium hover:underline flex items-center gap-1 border rounded-full px-2 md:px-3 py-1 text-[11px] md:text-[15px]"
         >
           View All →
         </button>
       </div>
-      <p>Do not miss the current offers until the end of March.</p>
+
       <div className="relative">
         {canScrollLeft && (
           <button
             onClick={() => scroll('left')}
-            className="absolute left-0 top-1/2 -translate-y-1/2 bg-white p-2 rounded-full shadow z-10"
+            className="absolute left-0 top-1/2 -translate-y-1/2 bg-white p-2 rounded-full shadow z-10 hidden md:flex"
           >
             <ChevronLeft />
           </button>
@@ -128,7 +133,7 @@ export default function DynamicSection() {
         {canScrollRight && (
           <button
             onClick={() => scroll('right')}
-            className="absolute right-0 top-1/2 -translate-y-1/2 bg-white p-2 rounded-full shadow z-10"
+            className="absolute right-0 top-1/2 -translate-y-1/2 bg-white p-2 rounded-full shadow z-10 hidden md:flex"
           >
             <ChevronRight />
           </button>

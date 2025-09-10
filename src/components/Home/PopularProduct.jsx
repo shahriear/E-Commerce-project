@@ -415,12 +415,12 @@ export default function EcommerceHome() {
               <img
                 src="/ads1.jpg"
                 alt="Banner Ads"
-                className="w-1/2 h-auto object-cover rounded-lg shadow"
+                className="w-2/5 h-auto object-cover rounded-lg shadow"
               />
               <img
                 src="/ads2.jpg"
                 alt="Banner Ads"
-                className="w-1/2 h-auto object-cover rounded-lg shadow"
+                className="w-2/5  h-auto object-cover rounded-lg shadow"
               />
             </div>
           </aside>

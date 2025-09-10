@@ -88,7 +88,7 @@ const BannerAds = () => {
           640: { slidesPerView: 2 }, // Small Tablet
           768: { slidesPerView: 2.3 }, // Tablet
           1024: { slidesPerView: 3 }, // Desktop
-          1280: { slidesPerView: 3.5 }, // Large Desktop
+          1280: { slidesPerView: 3 }, // Large Desktop
         }}
         className="px-4 sm:px-6 md:px-8"
       >

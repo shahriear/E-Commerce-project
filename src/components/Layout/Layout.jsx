@@ -33,7 +33,7 @@ const Layout = () => {
     <>
       <ScrollToTop />
       <Navbar />
-      <main className="pb-16">
+      <main className="">
         {/*  bottom nav space */}
         <Outlet />
       </main>
