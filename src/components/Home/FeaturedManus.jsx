@@ -72,12 +72,14 @@ const FeaturedManus = () => {
   };
 
   return (
-    <div className="md:container mx-auto pt-5 pb-4 md:pb-10 ml-3">
-      <h2 className="text-xl font-semibold mb-5">FEATURED CATEGORIES</h2>
+    <div className="md:container mx-auto pt-5 pb-4 md:pb-10 ">
+      <h2 className="text-xl font-semibold mb-5 pl-3 md:pl-0">
+        FEATURED CATEGORIES
+      </h2>
 
       {/* Scrollable Drag Container */}
       <ScrollContainer
-        className="flex gap-6 md:gap-14 overflow-x-auto cursor-grab active:cursor-grabbing px-1"
+        className="flex gap-6 md:gap-14 overflow-x-auto cursor-grab active:cursor-grabbing px-3 md:px-0"
         vertical={false}
       >
         {categories.map(cat => (

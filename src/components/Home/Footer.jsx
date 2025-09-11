@@ -485,9 +485,9 @@ const Footer = () => {
         </div>
       </div>
 
-      <div className="bg-white mt-10 container">
+      <div className="bg-white mt-10 md:container ">
         {/* Advantages / Features Section */}
-        <div className=" border-gray-200">
+        <div className=" border-gray-200 ">
           <Swiper
             modules={[Navigation]}
             slidesPerView={1.2}
@@ -500,7 +500,7 @@ const Footer = () => {
           >
             {advantages.map(adv => (
               <SwiperSlide key={adv.id}>
-                <div className="flex items-center space-x-2 p-4 border-b border-r border-gray-200">
+                <div className="flex items-center space-x-1 p-4 border-b border-r border-gray-200 ">
                   {adv.icon}
                   <span className="text-sm md:text-base font-medium">
                     {adv.text}
@@ -512,8 +512,8 @@ const Footer = () => {
         </div>
 
         {/* Footer Links Section */}
-        <div className="overflow-x-auto scrollbar-hide">
-          <div className="flex md:grid md:grid-cols-5 gap-11 py-10 min-w-max md:min-w-0">
+        <div className="overflow-x-auto scrollbar-hide pl-3">
+          <div className="flex md:grid md:grid-cols-5 gap-10 py-10 min-w-max md:min-w-0">
             {footerColumns.map((col, idx) => (
               <div
                 key={idx}
