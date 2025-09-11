@@ -103,7 +103,7 @@ export default function DynamicSection() {
   if (!category) return null;
 
   return (
-    <div className="max-w-7xl mx-auto py-6 pl-4 relative">
+    <div className="max-w-7xl mx-auto py-6 pl-4 md:pl-0 relative">
       {/* Title + View All */}
       <div className="flex items-center justify-between mb-3">
         <div>
@@ -115,7 +115,7 @@ export default function DynamicSection() {
 
         <button
           onClick={handleViewAll}
-          className="text-gray-500 font-semibold md:font-medium hover:underline flex items-center gap-1 border rounded-full px-2 md:px-3 py-1 text-[11px] md:text-[15px]"
+          className="text-gray-500 font-semibold md:font-medium hover:underline flex items-center gap-1 border rounded-full px-2 md:px-3 py-1 text-[11px] md:text-[15px] mr-3"
         >
           View All →
         </button>

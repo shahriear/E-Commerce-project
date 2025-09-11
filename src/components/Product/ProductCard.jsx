@@ -32,7 +32,7 @@ export default function ProductCard({ product, view }) {
         onClick={() => navigate(`/product/${product.id}`)}
       >
         {/* Discount badge */}
-        <div className="absolute left-2 top-2 rounded-full bg-blue-600 px-2 py-0.5 text-xs font-semibold text-white z-10">
+        <div className="absolute left-2 top-2 rounded-full bg-blue-400 px-2 py-0.5 text-xs font-semibold text-white z-10">
           {Math.round(discount)}%
         </div>
         {/* Hover actions */}
