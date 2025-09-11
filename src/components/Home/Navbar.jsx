@@ -527,7 +527,7 @@ const Navbar = () => {
         {/* Desktop Menu */}
         {/* Categories & Nav Links */}
         <div
-          className={`hidden md:block w-full border- border-gray-200 bg-white sticky top-0 z-50 transition-transform duration-300 ${
+          className={`hidden lg:block w-full border- border-gray-200 bg-white sticky top-0 z-50 transition-transform duration-300 ${
             show ? 'translate-y-0' : '-translate-y-0'
           }`}
         >
@@ -695,7 +695,7 @@ const Navbar = () => {
           </div>
         </div>
 
-        <div className="md:hidden border-b border-gray-200 bg-white sticky top-0 z-50">
+        <div className="lg:hidden border-b border-gray-200 bg-white sticky top-0 z-50">
           {/* Top Row: Menu + Logo + Cart */}
           <div className="flex justify-between items-center h-16 px-4">
             {/* Left Menu Icon */}
@@ -723,7 +723,7 @@ const Navbar = () => {
 
           {/* Bottom Row: Drag + Scrollable Nav Links */}
           <ScrollContainer
-            className="flex gap-4 px-4 py-2 overflow-x-auto scrollbar-hide cursor-grab"
+            className="flex gap-4 px-4 py-2 overflow-x-auto  scrollbar-hide cursor-grab"
             vertical={false}
           >
             {navLinks.map((link, idx) => (

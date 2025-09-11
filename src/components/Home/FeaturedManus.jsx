@@ -79,7 +79,7 @@ const FeaturedManus = () => {
 
       {/* Scrollable Drag Container */}
       <ScrollContainer
-        className="flex gap-6 md:gap-14 overflow-x-auto cursor-grab active:cursor-grabbing px-3 md:px-0"
+        className="flex gap-6 md:gap-14 overflow-x-auto cursor-grab active:cursor-grabbing px-3 pt-2 md:px-0"
         vertical={false}
       >
         {categories.map(cat => (

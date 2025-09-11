@@ -540,7 +540,7 @@ const Footer = () => {
           </div>
 
           {/* Social Icons */}
-          <div className="flex gap-3 text-3xl order-2 md:order-2 ">
+          <div className="flex gap-1 text-3xl md:text-4xl order-2 md:order-2 ">
             <CiFacebook className="p-1 text-purple-800 cursor-pointer" />
             <FaTwitter className="p-1 text-purple-800 cursor-pointer" />
             <FaInstagram className="p-1 text-purple-800 cursor-pointer" />

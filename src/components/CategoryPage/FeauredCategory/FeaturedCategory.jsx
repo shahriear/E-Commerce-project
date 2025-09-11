@@ -125,7 +125,7 @@ const FeaturedCategory = () => {
   return (
     <div className="container mx-auto py-10 flex flex-col lg:flex-row gap-6">
       {/* Left Sidebar */}
-      <aside className="lg:w-1/4 flex flex-col gap-4">
+      <aside className="hidden lg:flex lg:w-1/4 flex-col gap-4">
         <ScrollableCategoryFilter
           categories={subCategories}
           active={activeSubCategory}
@@ -194,7 +194,14 @@ const FeaturedCategory = () => {
           //  Products available hole animate
           <motion.div
             layout
-            className={`grid grid-cols-1 md:grid-cols-${productsPerRow} gap-4`}
+            className={`grid 
+    ${
+      view === 'list'
+        ? 'grid-cols-1'
+        : 'grid-cols-2 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-' +
+          productsPerRow
+    } 
+    gap-4`}
             transition={{ duration: 0.4, ease: 'easeInOut' }}
           >
             <AnimatePresence>
@@ -219,6 +226,8 @@ const FeaturedCategory = () => {
 };
 
 export default FeaturedCategory;
+
+// --------------------------
 
 // import React, { useState, useEffect, useMemo } from 'react';
 // import { useParams } from 'react-router-dom';
