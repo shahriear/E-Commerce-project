@@ -123,7 +123,7 @@ const FeaturedCategory = () => {
   ];
 
   return (
-    <div className="container mx-auto py-10 flex flex-col lg:flex-row gap-6">
+    <div className="container mx-auto py-8 flex flex-col lg:flex-row gap-6">
       {/* Left Sidebar */}
       <aside className="hidden lg:flex lg:w-1/4 flex-col gap-4">
         <ScrollableCategoryFilter
