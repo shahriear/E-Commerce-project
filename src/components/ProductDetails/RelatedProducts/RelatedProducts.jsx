@@ -249,7 +249,7 @@ export default function RelatedProducts({ category, currentProductId }) {
         )}
 
         {/* Slider Wrapper */}
-        <div className="overflow-x-auto">
+        <div className="overflow-x-auto scrollbar-hide">
           <div
             className="flex gap-4 transition-transform duration-500 ease-in-out "
             style={{ transform: `translateX(-${startIndex * itemWidth}px)` }}
@@ -262,7 +262,7 @@ export default function RelatedProducts({ category, currentProductId }) {
               return (
                 <div
                   key={product.id}
-                  className="flex-shrink-0 / max-w-[41%] bg-gray-100 shadow-md rounded-xl p-4 cursor-pointer hover:shadow-lg transition relative scrollbar-hide "
+                  className="flex-shrink-0 / max-w-[50%] bg-gray-100 shadow-md rounded-xl p-4 cursor-pointer hover:shadow-lg transition relative  "
                   style={{ width: itemWidth }}
                   onMouseEnter={() => setHoveredIndex(index)}
                   onMouseLeave={() => setHoveredIndex(null)}
@@ -352,7 +352,7 @@ export default function RelatedProducts({ category, currentProductId }) {
         {startIndex + visibleCount < products.length && (
           <button
             onClick={handleNext}
-            className="absolute -right-4 md:-right-8 top-1/2 -translate-y-1/2 bg-gray-200 p-2 rounded-full shadow-md z-10 hidden sm:flex scrollbar-hide"
+            className="absolute -right-4 md:-right-8 top-1/2 -translate-y-1/2 bg-gray-200 p-2 rounded-full shadow-md z-10 hidden sm:flex "
           >
             <ChevronRight size={22} />
           </button>

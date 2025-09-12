@@ -98,11 +98,11 @@ export default function ProductCard({ product, view }) {
             </p>
           )}
 
-          <div className="flex items-center gap-1 text-amber-500 text-xs">
+          <div className="flex items-center gap-1 text-amber-500 text-[10px]">
             {Array.from({ length: 5 }).map((_, i) => (
               <Star
                 key={i}
-                size={14}
+                size={13}
                 fill={i < Math.round(rating) ? 'currentColor' : 'transparent'}
               />
             ))}
@@ -110,10 +110,10 @@ export default function ProductCard({ product, view }) {
           </div>
 
           <div className="flex items-center gap-2">
-            <span className="text-gray-500 line-through font-medium text-[13px] md:text-[16px]">
+            <span className="text-gray-500 line-through font-medium text-[12px] md:text-[16px]">
               {currency(oldPrice)}
             </span>
-            <span className="text-red-500 font-medium text-[14px] md:text-[16px]">
+            <span className="text-red-500 font-medium text-[12px] md:text-[16px]">
               {currency(product.price)}
             </span>
           </div>

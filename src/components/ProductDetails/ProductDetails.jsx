@@ -426,20 +426,25 @@ export default function ProductDetails() {
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 bg-white rounded-2xl shadow-md p-5 sm:p-7">
         {/* Left: Images */}
         <div>
-          <div className="bg-gray-100 rounded-xl p-4 flex items-center justify-center">
-            <ZoomableImage
-              src={selectedImage}
-              alt={product.title}
-              className="w-full h-[300px] sm:h-[380px] object-contain rounded-lg"
-            />
+          {/* Main Image */}
+          <div className="bg-gray-100 rounded-xl p-3 sm:p-4 flex items-center justify-center">
+            <div className="w-full max-w-sm aspect-square flex items-center justify-center">
+              <ZoomableImage
+                src={selectedImage}
+                alt={product.title}
+                className="w-full h-full object-contain rounded-lg"
+              />
+            </div>
           </div>
-          <div className="flex gap-3 mt-4 overflow-x-auto pb-2">
+
+          {/* Thumbnails */}
+          <div className="flex sm:justify-center gap-3 mt-4 overflow-x-auto sm:overflow-x-hidden pb-2">
             {[product.thumbnail, ...(product.images || [])].map((img, i) => (
               <img
                 key={i}
                 src={img}
                 alt={`thumb-${i}`}
-                className={`w-16 h-16 sm:w-20 sm:h-20 object-contain rounded-lg border cursor-pointer transition-all duration-200 ${
+                className={`w-14 h-14 sm:w-16 sm:h-16 md:w-20 md:h-20 object-contain rounded-lg border cursor-pointer transition-all duration-200 ${
                   img === selectedImage
                     ? 'border-pink-600 shadow-md'
                     : 'border-gray-300 hover:opacity-80'

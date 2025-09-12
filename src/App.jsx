@@ -32,14 +32,14 @@ function App() {
     <>
       <RouterProvider router={router} />
       <ToastContainer
-        position="bottom-right"
+        position={window.innerWidth < 768 ? 'top-center' : 'bottom-right'}
         autoClose={1500}
         closeOnClick
         pauseOnHover
         theme="colored"
         draggable
-        toastClassName="!rounded-md !shadow-md !text-[11px] md:!text-[15px] !p-3 !pr-4 !w-[40%] md:!w-[250px] !ml-auto !mr-2"
-        bodyClassName="font-dm text-[13px] md:text-[20px]"
+        toastClassName="!rounded-md !shadow-md !text-[11px] md:!text-[15px] !p-2 md:!p-3 !pr-3 md:!pr-4 !w-[50%] sm:!w-[250px] !mx-auto md:!ml-auto md:!mr-2 whitespace-nowrap"
+        bodyClassName="font-dm text-[12px] md:text-[20px]"
       />
     </>
   );

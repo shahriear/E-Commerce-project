@@ -237,7 +237,7 @@ export default function ProductModal({ product, onClose }) {
   const modalContent = (
     <div className="fixed inset-0 bg-black/60 flex items-center justify-center z-50 p-4">
       <div className="bg-white rounded-2xl w-full max-w-4xl relative overflow-y-auto max-h-[90vh] shadow-2xl">
-        {/* X Button Top-Right */}
+        {/* X Button */}
         <button
           onClick={onClose}
           className="absolute top-4 right-4 p-2 bg-gray-100 rounded-full hover:bg-gray-200 transition z-50"
@@ -251,7 +251,6 @@ export default function ProductModal({ product, onClose }) {
             <h2 className="text-xl sm:text-2xl font-semibold">
               {product.title}
             </h2>
-
             {/* Rating & Brand */}
             <div className="flex flex-col sm:flex-row sm:items-center gap-2 mt-2 sm:mt-1">
               <p className="text-sm text-gray-500">
@@ -281,22 +280,26 @@ export default function ProductModal({ product, onClose }) {
         {/* Content */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 p-6">
           {/* Left: Images */}
-          <div className="flex flex-col ">
-            <ZoomableImage
-              src={selectedImage}
-              alt={product.title}
-              className="w-full h-60 sm:h-80 md:h-[350px] object-contain rounded-lg border"
-            />
-            <div className="flex gap-2 pt-4 overflow-x-auto md:overflow-hidden">
+          <div className="flex flex-col">
+            <div className="bg-gray-100 rounded-xl flex items-center justify-center p-3">
+              <div className="w-full max-w-sm aspect-square flex items-center justify-center">
+                <ZoomableImage
+                  src={selectedImage}
+                  alt={product.title}
+                  className="w-full h-full object-contain rounded-lg"
+                />
+              </div>
+            </div>
+            <div className="flex gap-2 pt-4 overflow-x-auto pb-2">
               {[product.thumbnail, ...(product.images || [])].map((img, i) => (
                 <img
                   key={i}
                   src={img}
                   alt={`thumb-${i}`}
-                  className={`w-16 h-16 object-contain rounded-md border cursor-pointer flex-shrink-0 transition  ${
+                  className={`w-14 h-14 sm:w-16 sm:h-16 object-contain rounded-md border cursor-pointer flex-shrink-0 transition ${
                     img === selectedImage
-                      ? 'border-red-500'
-                      : 'border-gray-400 opacity-50 hover:opacity-100'
+                      ? 'border-red-500 shadow'
+                      : 'border-gray-300 hover:opacity-80'
                   }`}
                   onClick={() => setSelectedImage(img)}
                 />
@@ -306,7 +309,7 @@ export default function ProductModal({ product, onClose }) {
 
           {/* Right: Details */}
           <div className="flex flex-col space-y-5">
-            {/* Price + discount */}
+            {/* Price */}
             <div className="flex flex-wrap items-center gap-3">
               <span className="text-red-600 text-xl font-bold">
                 {currency(product.price)}
@@ -319,13 +322,13 @@ export default function ProductModal({ product, onClose }) {
               </span>
             </div>
 
-            {/* Stock check */}
+            {/* Stock */}
             {product.stock > 0 ? (
-              <p className="text-green-600 font-normal pb-1 bg-green-100 inline px-2 py-0 rounded-2xl w-fit">
+              <p className="text-green-600 bg-green-100 px-2 py-0.5 rounded-2xl text-sm w-fit">
                 In stock
               </p>
             ) : (
-              <p className="text-red-600 font-normal pb-1 bg-red-100 inline px-2 py-0 rounded-2xl w-fit">
+              <p className="text-red-600 bg-red-100 px-2 py-0.5 rounded-2xl text-sm w-fit">
                 Out of stock
               </p>
             )}
@@ -352,28 +355,26 @@ export default function ProductModal({ product, onClose }) {
 
             {/* Quantity + Add to Cart */}
             <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3 mt-4">
-              {/* Quantity */}
-              <div className="flex items-center overflow-hidden ml-5 md:ml-0 mb-2 md:mb-0">
+              <div className="flex items-center border rounded-full overflow-hidden">
                 <button
                   onClick={() => setQuantity(q => Math.max(1, q - 1))}
-                  className="px-3 py-2 bg-gray-200 transition border rounded-full border-gray-400"
+                  className="px-3 py-2 bg-gray-200 hover:bg-gray-300"
                 >
                   -
                 </button>
                 <span className="px-4">{quantity}</span>
                 <button
                   onClick={() => setQuantity(q => q + 1)}
-                  className="px-3 py-2 bg-gray-200 transition border rounded-full border-gray-400"
+                  className="px-3 py-2 bg-gray-200 hover:bg-gray-300"
                 >
                   +
                 </button>
               </div>
 
-              {/* Add to Cart */}
               <button
                 onClick={() => toast.error('Please Login to continue')}
                 disabled={product.stock <= 0}
-                className={`px-6 py-2 rounded-full flex items-center justify-center gap-2 font-medium transition md:ml-4 text-[14px] ${
+                className={`px-6 py-2 rounded-full flex items-center justify-center gap-2 font-medium transition text-[14px] ${
                   product.stock > 0
                     ? 'bg-red-500 hover:bg-red-600 text-white'
                     : 'bg-gray-400 text-gray-200 cursor-not-allowed'
@@ -393,7 +394,7 @@ export default function ProductModal({ product, onClose }) {
                 >
                   <Heart size={14} /> Wishlist
                 </button>
-                <span className="absolute -top-7 left-1/2 -translate-x-1/2 px-2 py-1 text-xs text-white bg-gray-600 rounded-full opacity-0 group-hover:opacity-100 transition whitespace-nowrap text-[10px]">
+                <span className="absolute -top-7 left-1/2 -translate-x-1/2 px-2 py-1 text-xs text-white bg-gray-600 rounded-full opacity-0 group-hover:opacity-100 transition whitespace-nowrap">
                   Add to Wishlist
                 </span>
               </div>
@@ -406,7 +407,7 @@ export default function ProductModal({ product, onClose }) {
                 >
                   <Shuffle size={14} /> Compare
                 </button>
-                <span className="absolute -top-7 left-1/2 -translate-x-1/2 px-2 py-1 text-xs text-white bg-gray-600 rounded-full opacity-0 group-hover:opacity-100 transition whitespace-nowrap text-[10px]">
+                <span className="absolute -top-7 left-1/2 -translate-x-1/2 px-2 py-1 text-xs text-white bg-gray-600 rounded-full opacity-0 group-hover:opacity-100 transition whitespace-nowrap">
                   Add to Compare
                 </span>
               </div>

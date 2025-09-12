@@ -353,6 +353,7 @@ import SearchPopup from '../Popup/SearchPopup';
 import { FiShoppingBag } from 'react-icons/fi';
 import { HiOutlineShoppingBag } from 'react-icons/hi';
 import ScrollContainer from 'react-indiana-drag-scroll';
+import { toast } from 'react-toastify';
 
 const categories = [
   { name: 'Fashion', sub: ['Man', 'Woman'], icon: '/image/fash.png' },
@@ -515,7 +516,7 @@ const Navbar = () => {
     <>
       {/* Desktop & Mobile Top Navbar */}
       <header
-        className={` md:block w-full border-b border-gray-200 bg-white sticky top-0 z-50 transition-transform duration-300 transform ${
+        className={` md:block w-full border-b border-gray-200 bg-white sticky top-0 z-40 transition-transform duration-300 transform ${
           show ? 'translate-y-0' : '-translate-y- md:-translate-y-24'
         }`}
       >
@@ -715,7 +716,10 @@ const Navbar = () => {
             {/* Cart */}
             <div className="relative w-10 h-10 cursor-pointer">
               <HiOutlineShoppingBag className="w-full h-9 p-2 text-red-400 bg-red-100 rounded-full" />
-              <span className="absolute -top-1 -right-1 bg-red-600 text-white text-xs w-4 h-4 rounded-full flex items-center justify-center font-bold shadow-md">
+              <span
+                onClick={() => toast.error('Please Login to continue')}
+                className="absolute -top-1 -right-1 bg-red-600 text-white text-xs w-4 h-4 rounded-full flex items-center justify-center font-bold shadow-md"
+              >
                 0
               </span>
             </div>
@@ -731,7 +735,7 @@ const Navbar = () => {
                 key={idx}
                 onClick={() => handleNavClick(link.name)}
                 className="flex items-center gap-1 whitespace-nowrap 
-                rounded-full px-3 py-1.5 text-sm 
+                rounded-full px-3 py-1.5 text-sm font-medium
               hover:text-purple-600 active:scale-95 active:bg-gray-300 
                 transition transform duration-150 cursor-pointer select-none"
               >
@@ -799,7 +803,7 @@ const Navbar = () => {
 
                 {cat.sub.length > 0 && (
                   <div
-                    className={`pl-6 flex flex-col mt-1 gap-2 overflow-hidden transition-all duration-500 ease-in-out  
+                    className={`pl-6 flex flex-col mt-1 gap-2 overflow-hidden transition-all duration-500 ease-in-out bg-gray-100 rounded-2xl 
                       ${
                         activeCategory === cat.name
                           ? 'max-h-40 opacity-100'
@@ -813,7 +817,7 @@ const Navbar = () => {
                           handleCategoryClick(sub);
                           setSidebarOpen(false);
                         }}
-                        className="cursor-pointer hover:text-purple-700 bg-gray-100 rounded-xl"
+                        className="cursor-pointer hover:text-purple-700 rounded-xl"
                       >
                         {sub}
                       </div>

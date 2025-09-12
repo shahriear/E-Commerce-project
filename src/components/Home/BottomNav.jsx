@@ -172,6 +172,7 @@
 import React, { useState } from 'react';
 import { Home, Search, Heart, Package, User, X } from 'lucide-react';
 import { useNavigate, useLocation } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 const BottomNav = () => {
   const navigate = useNavigate();
@@ -258,7 +259,7 @@ const BottomNav = () => {
   return (
     <>
       {/*  Bottom Nav */}
-      <div className="fixed bottom-0 left-0 w-full bg-white border-t border-gray-200 shadow-md z-40 md:hidden">
+      <div className="fixed bottom-0 left-0 w-full bg-white border-t border-gray-200 shadow-md z-30 md:hidden">
         <div className="flex justify-around items-center h-15 text-gray-700 text-sm">
           <button
             onClick={() => navigate('/')}
@@ -281,7 +282,10 @@ const BottomNav = () => {
           </button>
 
           <button
-            onClick={() => navigate('/')}
+            onClick={() => {
+              toast.error('Please Login to continue');
+              navigate('/');
+            }}
             className={`flex flex-col items-center ${
               isActive('/wishlist') ? 'text-blue-500' : ''
             }`}
@@ -291,7 +295,10 @@ const BottomNav = () => {
           </button>
 
           <button
-            onClick={() => navigate('/')}
+            onClick={() => {
+              toast.error('Please Login to continue');
+              navigate('/');
+            }}
             className={`flex flex-col items-center ${
               isActive('/orders') ? 'text-blue-500' : ''
             }`}
@@ -301,7 +308,10 @@ const BottomNav = () => {
           </button>
 
           <button
-            onClick={() => navigate('/')}
+            onClick={() => {
+              toast.error('Please Login to continue');
+              navigate('/');
+            }}
             className={`flex flex-col items-center ${
               isActive('/account') ? 'text-blue-500' : ''
             }`}
@@ -345,7 +355,6 @@ const BottomNav = () => {
               </button>
             </div>
           </div>
-
           {showSuggestions && suggestions.length > 0 && (
             <div className="flex-1 overflow-y-auto">
               {suggestions.map(item => (

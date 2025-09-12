@@ -6,7 +6,7 @@ const ShowDropdown = ({ limit, setLimit }) => {
   const options = [10, 20, 30, 40, 50, 60];
 
   return (
-    <div className="relative w-32 z-40">
+    <div className="relative w-32 z-10">
       {/* Selected box */}
       <div
         className="p-2  flex items-center gap-3 cursor-pointer"
