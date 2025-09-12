@@ -242,7 +242,7 @@ export default function RelatedProducts({ category, currentProductId }) {
         {startIndex > 0 && (
           <button
             onClick={handlePrev}
-            className="absolute -left-4 md:-left-8 top-1/2 -translate-y-1/2 bg-gray-200 p-2 rounded-full shadow-md z-10 hidden sm:flex"
+            className="absolute -left-4 md:-left-8 top-1/2 -translate-y-1/2 bg-gray-200 p-2 rounded-full shadow-md z-10 hidden sm:flex "
           >
             <ChevronLeft size={22} />
           </button>
@@ -251,7 +251,7 @@ export default function RelatedProducts({ category, currentProductId }) {
         {/* Slider Wrapper */}
         <div className="overflow-x-auto">
           <div
-            className="flex gap-4 transition-transform duration-500 ease-in-out"
+            className="flex gap-4 transition-transform duration-500 ease-in-out "
             style={{ transform: `translateX(-${startIndex * itemWidth}px)` }}
           >
             {products.map((product, index) => {
@@ -262,7 +262,7 @@ export default function RelatedProducts({ category, currentProductId }) {
               return (
                 <div
                   key={product.id}
-                  className="flex-shrink-0 / max-w-[41%] bg-gray-100 shadow-md rounded-xl p-4 cursor-pointer hover:shadow-lg transition relative scrollbar-hide"
+                  className="flex-shrink-0 / max-w-[41%] bg-gray-100 shadow-md rounded-xl p-4 cursor-pointer hover:shadow-lg transition relative scrollbar-hide "
                   style={{ width: itemWidth }}
                   onMouseEnter={() => setHoveredIndex(index)}
                   onMouseLeave={() => setHoveredIndex(null)}
@@ -284,7 +284,7 @@ export default function RelatedProducts({ category, currentProductId }) {
                   </div>
 
                   {/* Image Swap on Hover */}
-                  <div className="relative w-full h-52 sm:h-60 mb-2 rounded-lg bg-gray-300 overflow-hidden">
+                  <div className="relative w-full h-52 sm:h-60 mb-2 rounded-lg bg-gray-300 overflow-hidden ">
                     <img
                       src={mainImage}
                       alt={product.title}
@@ -352,7 +352,7 @@ export default function RelatedProducts({ category, currentProductId }) {
         {startIndex + visibleCount < products.length && (
           <button
             onClick={handleNext}
-            className="absolute -right-4 md:-right-8 top-1/2 -translate-y-1/2 bg-gray-200 p-2 rounded-full shadow-md z-10 hidden sm:flex"
+            className="absolute -right-4 md:-right-8 top-1/2 -translate-y-1/2 bg-gray-200 p-2 rounded-full shadow-md z-10 hidden sm:flex scrollbar-hide"
           >
             <ChevronRight size={22} />
           </button>

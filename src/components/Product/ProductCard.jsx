@@ -56,7 +56,7 @@ export default function ProductCard({ product, view }) {
 
         {/* Image */}
         <div
-          className={`overflow-hidden rounded-xl  flex items-center justify-center relative bg-gray-100 m-auto
+          className={`overflow-hidden rounded-xl  flex items-center justify-center relative  m-auto 
           ${
             isListView
               ? 'w-40 h-40 flex-shrink-0'
@@ -66,14 +66,14 @@ export default function ProductCard({ product, view }) {
           <img
             src={mainImage}
             alt={product.title}
-            className={`absolute h-full w-full object-contain transition-all duration-500 ease-in-out   ${
+            className={`absolute h-full :w-full object-contain transition-all duration-500 ease-in-out    ${
               hovered ? 'scale-105 opacity-0' : 'scale-100 opacity-100'
             }`}
           />
           <img
             src={hoverImage}
             alt={product.title}
-            className={`absolute h-full w-full object-contain transition-all duration-500 ease-in-out  ${
+            className={`absolute h-full  w-full object-contain transition-all duration-500 ease-in-out  ${
               hovered ? 'scale-104 opacity-100' : 'scale-100 opacity-0'
             }`}
           />

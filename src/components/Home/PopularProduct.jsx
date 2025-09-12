@@ -286,7 +286,7 @@ export default function EcommerceHome() {
   const { data: newProducts, loading: newLoading } = useNewProducts();
 
   return (
-    <div className="container min-h-screen w-full bg-gray-50 px-4 sm:px-6 lg:px-8">
+    <div className="container min-h-screen w-full bg-gray-50 px-0 sm:px-6 lg:px-8">
       <div className="mx-auto max-w-8xl py-6 grid grid-cols-1 lg:grid-cols-4 gap-6">
         {/* Left Banner (only visible on lg+) */}
         <aside className="hidden lg:block lg:col-span-1">
@@ -305,20 +305,20 @@ export default function EcommerceHome() {
         </aside>
 
         {/* Right Product */}
-        <div className="lg:col-span-3 space-y-10">
+        <div className="lg:col-span-3 space-y-10 pl-3">
           {/* Popular Products Section */}
           <section>
             <header className="sticky top-0 z-30 bg-gray-50">
-              <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between md:px-4 py-3 gap-4">
+              <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between md:px-4 py-3 gap-4 ">
                 <div>
-                  <h2 className="text-lg sm:text-xl font-bold">
+                  <h2 className="text-[17px] md:text-xl font-semibold sm:text-xl ">
                     POPULAR PRODUCTS
                   </h2>
                   <p className="text-xs text-gray-500">
                     Do not miss the current offers until the end of March.
                   </p>
                 </div>
-                <div className="w-full sm:w-[60%]">
+                <div className="w-full sm:w-[60%] ">
                   <ScrollableCategoryNav
                     categories={CATEGORIES}
                     active={activeCategory}
@@ -358,9 +358,11 @@ export default function EcommerceHome() {
 
           {/* New Products Section */}
           <section>
-            <div className="mb-3 flex items-center justify-between px-2 sm:px-0">
+            <div className="mb-3 flex items-center justify-between px-2 sm:px-0 ">
               <div>
-                <h2 className="text-lg sm:text-xl font-bold">NEW PRODUCTS</h2>
+                <h2 className="text-[17px] md:text-xl font-semibold sm:text-xl ">
+                  NEW PRODUCTS
+                </h2>
                 <p className="text-xs text-gray-500">
                   New products with updated stocks.
                 </p>
@@ -368,16 +370,16 @@ export default function EcommerceHome() {
             </div>
 
             {newLoading ? (
-              <div className="flex gap-4 overflow-x-auto py-2 md:grid md:grid-cols-3 lg:grid-cols-4 md:gap-4">
+              <div className="flex gap-4 overflow-x-auto py-2 md:grid md:grid-cols-3 lg:grid-cols-4 md:gap-4 ">
                 {Array.from({ length: 1 }).map((_, i) => (
                   <SkeletonCard
                     key={i}
-                    className="min-w-[150px] sm:min-w-[180px] flex-shrink-0 md:flex-shrink md:min-w-0"
+                    className="min-w-[150px] sm:min-w-[180px] flex-shrink-0 md:flex-shrink md:min-w-0 "
                   />
                 ))}
               </div>
             ) : (
-              <div className="flex gap-4 overflow-x-auto py-2 md:grid md:grid-cols-3 lg:grid-cols-3 md:gap-4 xl:grid-cols-4">
+              <div className="flex gap-4 overflow-x-auto py-2 md:grid md:grid-cols-3 lg:grid-cols-3 md:gap-4 xl:grid-cols-4 scrollbar-hide">
                 {newProducts.map(p => (
                   <div
                     key={p.id}

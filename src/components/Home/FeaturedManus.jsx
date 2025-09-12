@@ -72,14 +72,14 @@ const FeaturedManus = () => {
   };
 
   return (
-    <div className="md:container mx-auto pt-5 pb-4 md:pb-10 ">
-      <h2 className="text-xl font-semibold mb-5 pl-3 md:pl-0">
+    <div className="md:container mx-auto pt-4 pb-4 md:pb-10 ">
+      <h2 className="text-[17px] md:text-xl font-semibold mb-4 pl-3 md:pl-0">
         FEATURED CATEGORIES
       </h2>
 
       {/* Scrollable Drag Container */}
       <ScrollContainer
-        className="flex gap-6 md:gap-14 overflow-x-auto cursor-grab active:cursor-grabbing px-3 pt-2 md:px-0"
+        className="flex gap-5 md:gap-14 overflow-x-auto cursor-grab active:cursor-grabbing px-3 pt-2 md:px-0"
         vertical={false}
       >
         {categories.map(cat => (
@@ -89,7 +89,7 @@ const FeaturedManus = () => {
             className="flex-shrink-0 flex flex-col items-center group cursor-pointer bg-transparent border-none"
           >
             <div
-              className={`w-28 h-28 flex items-center justify-center rounded-full border border-gray-200 ${cat.bg} transform transition-all duration-300 group-hover:-translate-y-2 hover:shadow-xl`}
+              className={` w-25 h-25 md:w-28 md:h-28 flex items-center justify-center rounded-full border border-gray-200 ${cat.bg} transform transition-all duration-300 group-hover:-translate-y-2 hover:shadow-xl`}
             >
               <img
                 src={cat.icon}

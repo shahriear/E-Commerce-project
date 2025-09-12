@@ -45,7 +45,9 @@ export default function FeaturedProducts() {
   return (
     <div className="max-w-7xl mx-auto py-6  space-y-6 relative pl-4 md:pl-0 ">
       <div>
-        <h2 className="text-xl font-bold">FEATURED PRODUCTS</h2>
+        <h2 className="text-[17px] md:text-xl font-semibold">
+          FEATURED PRODUCTS
+        </h2>
         <p className="text-sm text-gray-500">
           Do not miss the current offers until the end of March.
         </p>

@@ -3,6 +3,7 @@ import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import ProductCard from '../../Product/ProductCard';
 import SkeletonCard from '../../Product/SkeletonCard';
+import { FaArrowRightLong } from 'react-icons/fa6';
 
 // Main categories
 const CATEGORIES = [
@@ -107,7 +108,9 @@ export default function DynamicSection() {
       {/* Title + View All */}
       <div className="flex items-center justify-between mb-3">
         <div>
-          <h2 className="text-xl font-bold">{category.toUpperCase()}</h2>
+          <h2 className="text-[17px] md:text-xl font-semibold">
+            {category.toUpperCase()}
+          </h2>
           <p className="text-xs text-gray-500">
             Do not miss the current offers until the end of March.
           </p>
@@ -115,9 +118,10 @@ export default function DynamicSection() {
 
         <button
           onClick={handleViewAll}
-          className="text-gray-500 font-semibold md:font-medium hover:underline flex items-center gap-1 border rounded-full px-2 md:px-3 py-1 text-[11px] md:text-[15px] mr-3"
+          className="text-gray-500 font-semibold md:font-medium hover:underline flex items-center gap-1 border rounded-full px-2 md:px-3 py-1 text-[11px] md:text-[15px] mr-3 whitespace-nowrap"
         >
-          View All →
+          View All
+          <FaArrowRightLong />
         </button>
       </div>
 
