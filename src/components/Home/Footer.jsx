@@ -451,7 +451,7 @@ const Footer = () => {
     <div>
       {/* Newsletter Section */}
       <div className="  bg-color text-white py-10 px-4 md:px-20 flex flex-col md:flex-row justify-between items-center gap-6">
-        <div className="flex container justify-between">
+        <div className="flex md:container justify-between items-center">
           <div className=" ">
             <p className="text-sm mb-2">$20 discount for your first order</p>
             <h2 className="text-2xl md:text-3xl font-bold mb-2">
@@ -466,9 +466,9 @@ const Footer = () => {
               <input
                 type="email"
                 placeholder="Your Email Address"
-                className="flex-1 p-2 border-0 outline-none text-gray-800 bg-white py-4"
+                className="md:flex-1 w-full p-2 border-0 outline-none text-gray-800 bg-white py-4"
               />
-              <button className="bg-color text-white font-semibold px-4 py-2 border mx-1 cursor-pointer">
+              <button className="bg-color text-white font-semibold px-4 py-2 border mx-1 cursor-pointer text-[12px] md:text-[15px]">
                 Subscribe
               </button>
             </div>
