@@ -174,7 +174,7 @@ export default function ProductTabs({
     if (currentTab === 'reviews' && reviewsRef.current) {
       reviewsRef.current.scrollIntoView({
         behavior: 'smooth',
-        block: 'start',
+        block: 'end',
       });
     }
   }, [currentTab]);

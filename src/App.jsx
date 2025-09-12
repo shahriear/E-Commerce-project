@@ -13,6 +13,8 @@ import { ToastContainer } from 'react-toastify';
 import FeaturedCategoryPage from './components/Pages/FeaturedCategoryPage';
 
 import ProductDetailsPages from './components/Pages/ProductDetailsPages';
+import ContactUs from './components/Home/Customer Service/ContactUs';
+import RefundPolicy from './components/Home/Customer Service/RefundPolicy';
 
 function App() {
   const router = createBrowserRouter(
@@ -24,6 +26,8 @@ function App() {
 
         <Route path="/category/:category" element={<FeaturedCategoryPage />} />
         <Route path="/product/:id" element={<ProductDetailsPages />} />
+        <Route path="/contact-us" element={<ContactUs />} />
+        <Route path="/refund-policy" element={<RefundPolicy />} />
       </Route>
     )
   );

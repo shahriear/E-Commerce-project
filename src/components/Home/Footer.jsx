@@ -432,18 +432,6 @@ const footerColumns = [
       'Party Trays',
     ],
   },
-  {
-    title: 'BREADS & BAKERY',
-    items: [
-      'Fresh Vegetables',
-      'Herbs & Seasonings',
-      'Fresh Fruits',
-      'Cuts & Sprouts',
-      'Exotic Fruits & Veggies',
-      'Packaged Produce',
-      'Party Trays',
-    ],
-  },
 ];
 
 const Footer = () => {
@@ -485,9 +473,9 @@ const Footer = () => {
         </div>
       </div>
 
-      <div className="bg-white mt-10 md:container ">
+      <div className="bg-white mt-10 md:container">
         {/* Advantages / Features Section */}
-        <div className=" border-gray-200 whitespace-nowrap ">
+        <div className="border-gray-200 whitespace-nowrap">
           <Swiper
             modules={[Navigation]}
             slidesPerView={1.2}
@@ -501,7 +489,7 @@ const Footer = () => {
           >
             {advantages.map(adv => (
               <SwiperSlide key={adv.id}>
-                <div className="flex items-center space-x-1 p-4 border-b border-r border-gray-200 ">
+                <div className="flex items-center space-x-1 p-4 border-b border-r border-gray-200">
                   {adv.icon}
                   <span className="text-sm md:text-base font-medium">
                     {adv.text}
@@ -523,28 +511,55 @@ const Footer = () => {
                 <h3 className="text-indigo-700 font-semibold mb-3">
                   {col.title}
                 </h3>
-                <ul className="space-y-1 text-sm text-gray-600">
+                <ul className="space-y-1 text-sm text-gray-600 ">
                   {col.items.map((item, i) => (
-                    <li key={i}>{item}</li>
+                    <li className="hover:text-black cursor-pointer" key={i}>
+                      {item}
+                    </li>
                   ))}
                 </ul>
               </div>
             ))}
+
+            {/* Contact Us & Refund Policy */}
+            <div className="flex-shrink-0 mr-1 w-fit sm:w-[45%] md:w-auto">
+              <h3 className="text-indigo-700 font-semibold mb-3">
+                Customer Service
+              </h3>
+              <ul className="space-y-1 text-sm text-gray-600">
+                <li>
+                  <a
+                    href="/contact-us"
+                    className="hover:text-blue-500 transition"
+                  >
+                    Contact Us
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="/refund-policy"
+                    className="hover:text-blue-500 transition"
+                  >
+                    Refund Policy
+                  </a>
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
 
         {/* Footer Bottom */}
-        <div className="flex flex-col md:flex-row justify-between items-center pb-3 gap-4 md:mb-4 mb-14 ">
+        <div className="flex flex-col md:flex-row justify-between items-center pb-3 gap-4 md:mb-4 mb-14">
           {/* Copyright */}
           <div className="text-center text-sm text-gray-500 order-1 md:order-1">
             Copyright 2024. All rights reserved
           </div>
 
           {/* Social Icons */}
-          <div className="flex gap-1 text-3xl md:text-4xl order-2 md:order-2 ">
-            <CiFacebook className="p-1 text-purple-800 cursor-pointer" />
-            <FaTwitter className="p-1 text-purple-800 cursor-pointer" />
-            <FaInstagram className="p-1 text-purple-800 cursor-pointer" />
+          <div className="flex gap-1 text-3xl md:text-4xl order-2 md:order-2">
+            <CiFacebook className="p-1 text-purple-800 cursor-pointer hover:text-blue-600 transition" />
+            <FaTwitter className="p-1 text-purple-800 cursor-pointer hover:text-blue-600 transition" />
+            <FaInstagram className="p-1 text-purple-800 cursor-pointer hover:text-pink-500 transition" />
           </div>
         </div>
       </div>

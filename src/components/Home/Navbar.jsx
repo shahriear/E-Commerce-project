@@ -592,12 +592,18 @@ const Navbar = () => {
 
             {/* Sign in + Cart */}
             <div className="flex items-center gap-4 ml-11">
-              <button className="bg-color text-white px-4 py-2 rounded-full text-sm font-medium hover:bg-purple-800 transition">
+              <button
+                className="bg-color text-white px-4 py-2 rounded-full text-sm font-medium hover:bg-purple-800 transition"
+                onClick={() => toast.error('Please Login to continue')}
+              >
                 Sign In
               </button>
               <div className="relative cursor-pointer">
                 <ShoppingBag size={22} />
-                <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs w-5 h-5 rounded-full flex items-center justify-center">
+                <span
+                  className="absolute -top-2 -right-2 bg-red-500 text-white text-xs w-5 h-5 rounded-full flex items-center justify-center"
+                  onClick={() => toast.error('Please Login to continue')}
+                >
                   0
                 </span>
               </div>
@@ -829,7 +835,10 @@ const Navbar = () => {
           </div>
 
           {/* Sign In */}
-          <button className="mt-6 bg-color text-white px-4 py-2 rounded-xl hover:bg-indigo-900">
+          <button
+            className="mt-6 bg-color text-white px-4 py-2 rounded-xl hover:bg-indigo-900"
+            onClick={() => toast.error('Please Login to continue')}
+          >
             Sign In
           </button>
         </div>
