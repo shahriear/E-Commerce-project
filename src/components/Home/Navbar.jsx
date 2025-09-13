@@ -770,7 +770,7 @@ const Navbar = () => {
               <img
                 src="/Logo.png"
                 alt="Logo"
-                className="w-fit h-14 object-contain rounded-full"
+                className="w-36 h-fit object-contain rounded-full"
               />
             </Link>
             <button onClick={() => setSidebarOpen(false)}>
