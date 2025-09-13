@@ -598,12 +598,12 @@ const Navbar = () => {
               >
                 Sign In
               </button>
-              <div className="relative cursor-pointer">
+              <div
+                className="relative cursor-pointer"
+                onClick={() => toast.error('Please Login to continue')}
+              >
                 <ShoppingBag size={22} />
-                <span
-                  className="absolute -top-2 -right-2 bg-red-500 text-white text-xs w-5 h-5 rounded-full flex items-center justify-center"
-                  onClick={() => toast.error('Please Login to continue')}
-                >
+                <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs w-5 h-5 rounded-full flex items-center justify-center">
                   0
                 </span>
               </div>
