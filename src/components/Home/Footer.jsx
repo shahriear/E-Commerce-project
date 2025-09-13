@@ -519,7 +519,7 @@ const Footer = () => {
                       <h3 className="text-indigo-700 font-semibold mb-2">
                         {col.title}
                       </h3>
-                      <ul className="space-y-1 text-sm text-gray-600">
+                      <ul className="space-y-1 text-[13px] md:text-sm text-gray-600">
                         {col.items.map((item, i) => (
                           <li
                             key={i}
@@ -563,7 +563,7 @@ const Footer = () => {
 
             {/* Footer Bottom */}
             <div className="flex flex-col md:flex-row justify-between items-center pb-3 gap-4 md:mb-0 mb-14 ">
-              <div className="text-center text-[12px] text-gray-500">
+              <div className="text-center text-[12px] text-gray-500 ">
                 Copyright 2024. All rights reserved
               </div>
               <div className="flex gap-3 text-3xl md:text-4xl">
