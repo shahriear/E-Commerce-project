@@ -765,12 +765,12 @@ const Navbar = () => {
       >
         <div className="p-4 flex flex-col gap-4">
           {/* Top: Logo + Close */}
-          <div className="flex justify-between items-center mb-4">
+          <div className="flex justify-between items- mb-4">
             <Link to="/" onClick={() => setSidebarOpen(false)}>
               <img
                 src="/Logo.png"
                 alt="Logo"
-                className="w-fit h-14 object-contain rounded-full"
+                className="w-fit h-14 object-contain rounded-full "
               />
             </Link>
             <button onClick={() => setSidebarOpen(false)}>
