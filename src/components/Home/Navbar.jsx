@@ -537,9 +537,9 @@ const Navbar = () => {
             <div className="flex items-center gap-4 lg:gap-6 flex-1">
               <Link to={'/'}>
                 <img
-                  src="/logo.jpg"
+                  src="/Logo.png"
                   alt="Logo"
-                  className="w-fit h-fit object-cover rounded-full"
+                  className="w-36 h-fit object-cover rounded-full"
                 />
               </Link>
 
@@ -704,7 +704,7 @@ const Navbar = () => {
 
         <div className="lg:hidden border-b border-gray-200 bg-white sticky top-0 z-50">
           {/* Top Row: Menu + Logo + Cart */}
-          <div className="flex justify-between items-center h-16 px-4">
+          <div className="flex justify-between items-center h-14 px-4">
             {/* Left Menu Icon */}
             <button onClick={() => setSidebarOpen(true)}>
               <Menu size={24} />
@@ -713,9 +713,9 @@ const Navbar = () => {
             {/* Logo */}
             <Link to="/" className="mx-auto">
               <img
-                src="/logo.jpg"
+                src="/Logo.png"
                 alt="Logo"
-                className="h-10 w-fit object-cover rounded-full"
+                className="h-12 w-fit object-cover rounded-full"
               />
             </Link>
 
@@ -768,9 +768,9 @@ const Navbar = () => {
           <div className="flex justify-between items-center mb-4">
             <Link to="/" onClick={() => setSidebarOpen(false)}>
               <img
-                src="/logo.jpg"
+                src="/Logo.png"
                 alt="Logo"
-                className="w-fit h-10 object-cover rounded-full"
+                className="w-fit h-11 object-cover rounded-full"
               />
             </Link>
             <button onClick={() => setSidebarOpen(false)}>
