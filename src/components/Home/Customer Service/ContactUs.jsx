@@ -29,7 +29,7 @@ export default function ContactUs() {
           placeholder="Your Name"
           value={formData.name}
           onChange={handleChange}
-          className="border border-gray-400 px-3 text-[15px] md:text-[16px] py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+          className="border border-gray-400 px-3 text-[16px] md:text-[16px] py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
           required
         />
         <input
@@ -38,7 +38,7 @@ export default function ContactUs() {
           placeholder="Your Email"
           value={formData.email}
           onChange={handleChange}
-          className="border border-gray-400 px-3 text-[15px] md:text-[16px] py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+          className="border border-gray-400 px-3 text-[16px] md:text-[16px] py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
           required
         />
         <textarea
@@ -46,7 +46,7 @@ export default function ContactUs() {
           placeholder="Your Message"
           value={formData.message}
           onChange={handleChange}
-          className="border border-gray-400 px-3 py-2 text-[15px] md:text-[16px] rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+          className="border border-gray-400 px-3 py-2 text-[16px] md:text-[16px] rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
           rows={5}
         />
         <button
