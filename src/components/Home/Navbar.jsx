@@ -404,6 +404,7 @@ const Navbar = () => {
   const [isCategoriesOpen, setIsCategoriesOpen] = useState(false);
   const [show, setShow] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
+  const [activeLink, setActiveLink] = useState(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -704,7 +705,7 @@ const Navbar = () => {
 
         <div className="lg:hidden border-b border-gray-200 bg-white sticky top-0 z-50">
           {/* Top Row: Menu + Logo + Cart */}
-          <div className="flex justify-between items-center h-14 px-4 shadow-sm bg-white">
+          <div className="flex justify-between items-center h-14 px-4  bg-white">
             {/* Left Menu Icon */}
             <button onClick={() => setSidebarOpen(true)} className="md:hidden">
               <Menu size={24} />
@@ -736,19 +737,43 @@ const Navbar = () => {
             className="flex gap-4 px-4 py-2 overflow-x-auto  scrollbar-hide cursor-grab"
             vertical={false}
           >
-            {navLinks.map((link, idx) => (
+            {/* {navLinks.map((link, idx) => (
               <div
                 key={idx}
                 onClick={() => handleNavClick(link.name)}
                 className="flex items-center gap-1 whitespace-nowrap 
                 rounded-full px-3 py-1.5 text-sm font-medium
-              hover:text-purple-600 active:scale-95 active:bg-gray-300 
+              hover:text-purple-600 active:scale-95 active:bg-gray-200 
                 transition transform duration-150 cursor-pointer select-none"
               >
                 <img
                   src={link.icon}
                   alt={link.name}
                   className="w-4 h-4 object-contain"
+                />
+                <span>{link.name}</span>
+              </div>
+            ))} */}
+
+            {navLinks.map((link, idx) => (
+              <div
+                key={idx}
+                onClick={() => {
+                  setActiveLink(link.name);
+                  handleNavClick(link.name);
+                }}
+                className={`flex items-center gap-2 whitespace-nowrap 
+      rounded-full px-3 py-1.5 text-sm font-medium
+      hover:text-purple-600 hover:bg-purple-50
+      transition-all duration-200 ease-in-out
+      cursor-pointer select-none group
+      ${activeLink === link.name ? 'text-blue-600' : ''}
+    `}
+              >
+                <img
+                  src={link.icon}
+                  alt={link.name}
+                  className="w-4 h-4 object-contain group-hover:scale-110 transition-transform duration-200"
                 />
                 <span>{link.name}</span>
               </div>
