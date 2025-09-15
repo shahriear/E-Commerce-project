@@ -711,7 +711,7 @@ const Navbar = () => {
             </button>
 
             {/* Logo */}
-            <Link to="/" className="mx-auto">
+            <Link to="/" className="mx-">
               <img
                 src="/Logo.png"
                 alt="Logo"
@@ -720,7 +720,7 @@ const Navbar = () => {
             </Link>
 
             {/* Cart */}
-            <div className="relative w-fit h-10 cursor-pointer">
+            <div className="relative w-10 h-10 cursor-pointer">
               <HiOutlineShoppingBag className="w-full h-9 p-2 text-red-400 bg-red-100 rounded-full" />
               <span
                 onClick={() => toast.error('Please Login to continue')}
