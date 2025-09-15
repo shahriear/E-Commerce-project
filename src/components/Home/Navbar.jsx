@@ -704,28 +704,28 @@ const Navbar = () => {
 
         <div className="lg:hidden border-b border-gray-200 bg-white sticky top-0 z-50">
           {/* Top Row: Menu + Logo + Cart */}
-          <div className="flex justify-between items-center h-14 px-4">
+          <div className="flex justify-between items-center h-14 px-4 shadow-sm bg-white">
             {/* Left Menu Icon */}
-            <button onClick={() => setSidebarOpen(true)}>
+            <button onClick={() => setSidebarOpen(true)} className="md:hidden">
               <Menu size={24} />
             </button>
 
             {/* Logo */}
-            <Link to="/" className="mx-">
+            <Link to="/" className="flex-shrink-0 mx-auto md:mx-0">
               <img
                 src="/Logo.png"
                 alt="Logo"
-                className="w-fit h-12 object-contain rounded-full"
+                className="h-10 sm:h-12 object-contain rounded-full"
               />
             </Link>
 
             {/* Cart */}
-            <div className="relative w-10 h-10 cursor-pointer">
-              <HiOutlineShoppingBag className="w-full h-9 p-2 text-red-400 bg-red-100 rounded-full" />
-              <span
-                onClick={() => toast.error('Please Login to continue')}
-                className="absolute -top-1 -right-1 bg-red-600 text-white text-xs w-4 h-4 rounded-full flex items-center justify-center font-bold shadow-md"
-              >
+            <div
+              onClick={() => toast.error('Please Login to continue')}
+              className="relative w-10 h-10 cursor-pointer"
+            >
+              <HiOutlineShoppingBag className="w-full h-full p-2 text-red-400 bg-red-100 rounded-full" />
+              <span className="absolute -top-1 -right-1 bg-red-600 text-white text-xs w-4 h-4 rounded-full flex items-center justify-center font-bold shadow-md">
                 0
               </span>
             </div>
