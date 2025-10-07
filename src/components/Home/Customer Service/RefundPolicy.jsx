@@ -10,10 +10,10 @@ export default function RefundPolicy() {
         tempus purus, nec tincidunt ex lorem nec massa.
       </p>
       <ul className="list-disc ml-5 space-y-2 text-gray-700">
-        <li>Refunds are available within 30 days of purchase.</li>
-        <li>Products must be in original condition.</li>
-        <li>Refund will be processed within 5-7 business days.</li>
-        <li>Contact our support for further assistance.</li>
+        <li>Lorem ipsum dolor sit amet, consectetur elit..</li>
+        <li>Lorem ipsum dolor sit amet, consectetur.</li>
+        <li>Lorem ipsum dolor sit amet, consectetur.</li>
+        <li>Lorem ipsum dolor sit.</li>
       </ul>
     </div>
   );

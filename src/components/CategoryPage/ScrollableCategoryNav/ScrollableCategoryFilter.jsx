@@ -30,7 +30,6 @@ const ScrollableCategoryFilter = ({ active, onClick }) => {
                   : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
               }`}
           >
-            {/* Circle indicator */}
             {active === cat ? (
               <CheckCircle2 className="w-4 h-4 text-blue-500" />
             ) : (

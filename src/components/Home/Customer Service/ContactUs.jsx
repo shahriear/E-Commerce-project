@@ -14,7 +14,7 @@ export default function ContactUs() {
 
   const handleSubmit = e => {
     e.preventDefault();
-    // এখন আপনি API call করতে পারেন
+
     toast.success('Message sent successfully!');
     setFormData({ name: '', email: '', message: '' });
   };

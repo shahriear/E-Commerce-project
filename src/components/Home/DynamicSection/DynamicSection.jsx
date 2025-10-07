@@ -39,7 +39,6 @@ export default function DynamicSection() {
   const [canScrollRight, setCanScrollRight] = useState(false);
   const navigate = useNavigate();
 
-  // On page load, pick a random category
   useEffect(() => {
     const randomCategory =
       CATEGORIES[Math.floor(Math.random() * CATEGORIES.length)];
@@ -65,7 +64,6 @@ export default function DynamicSection() {
     fetchProducts();
   }, []);
 
-  // Scroll arrows logic
   useEffect(() => {
     const scrollEl = scrollRef.current;
     if (!scrollEl) return;
@@ -105,7 +103,6 @@ export default function DynamicSection() {
 
   return (
     <div className="max-w-7xl mx-auto py-6 pl-4 md:pl-0 relative">
-      {/* Title + View All */}
       <div className="flex items-center justify-between mb-3">
         <div>
           <h2 className="text-[17px] md:text-xl font-semibold">

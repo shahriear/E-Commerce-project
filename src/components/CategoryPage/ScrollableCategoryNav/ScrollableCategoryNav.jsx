@@ -23,7 +23,6 @@ function ScrollableCategoryNav({ categories, active, onClick }) {
         <ChevronLeft size={18} />
       </button>
 
-      {/* Scrollable Pills */}
       <div
         ref={scrollRef}
         className="flex overflow-x-auto gap- md:px-6 scrollbar-hide scroll-smooth"

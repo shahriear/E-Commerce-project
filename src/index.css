@@ -45,14 +45,12 @@
   transform: scale(1.1);
 }
 
-/* Hide scrollbar arrows (top-bottom button) */
 ::-webkit-scrollbar-button {
   display: none;
 }
 
-/* Make clean sticky bar */
 ::-webkit-scrollbar {
-  width: 6px; /* bar width */
+  width: 6px;
   height: 8px;
 }
 
@@ -66,5 +64,5 @@
 }
 
 ::-webkit-scrollbar-track {
-  background: transparent; /* track clean thakbe */
+  background: transparent;
 }

@@ -33,10 +33,8 @@ const SingleFeaturedSlider = () => {
 
   return (
     <div className="relative overflow-hidden w-full py-4">
-      {/* Title */}
       <h3 className="text-md font-semibold mb-2 px-2">FEATURED PRODUCTS</h3>
 
-      {/* Slider wrapper */}
       <div
         className="flex transition-transform duration-500 ease-in-out"
         style={{ transform: `translateX(-${current * 100}%)` }}
@@ -44,14 +42,13 @@ const SingleFeaturedSlider = () => {
         {products.map(product => (
           <div
             key={product.id}
-            className="flex-shrink-0 w-full flex justify-start" // Left aligned
+            className="flex-shrink-0 w-full flex justify-start"
           >
             <ProductCard product={product} />
           </div>
         ))}
       </div>
 
-      {/* Left Arrow inside card */}
       <button
         onClick={prevSlide}
         className="absolute left-1 top-1/2 -translate-y-1/2 bg-white shadow rounded-full p-1 hover:bg-gray-100 z-10"
@@ -59,7 +56,6 @@ const SingleFeaturedSlider = () => {
         <ChevronLeft size={28} />
       </button>
 
-      {/* Right Arrow inside card */}
       <button
         onClick={nextSlide}
         className="absolute right-28 top-1/2 -translate-y-1/2 bg-white shadow rounded-full p-1 hover:bg-gray-100 z-10"
